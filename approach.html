@@ -4,12 +4,50 @@
   <meta charset="UTF-8" />
   <title>Approach | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Our practical, child-centered approach to supporting learning, behavior, and emotional development." />
+  <meta name="description" content="Our practical approach: connection, structure, skills, and encouragement." />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .steps{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .step{
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      padding: 18px;
+      background: #fff;
+      box-shadow: var(--shadow2);
+    }
+    .num{
+      display:inline-flex;
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+      align-items:center;
+      justify-content:center;
+      font-weight: 900;
+      background: rgba(15,23,42,.08);
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+    .step h3{ margin: 0 0 6px; font-size: 18px; }
+    .step p{ margin: 0; color: var(--muted); font-weight: 600; }
+    .mini{
+      margin-top: 10px;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 13px;
+    }
+    @media (max-width: 960px){
+      .steps{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
-
 <header>
   <div class="container navbar">
     <a class="brand" href="index.html">
@@ -33,109 +71,81 @@
   <div class="container">
 
     <h1 style="font-size:42px;margin-top:0;">Our Approach</h1>
-
     <p class="section-sub">
-      We combine warmth, structure, and play-based learning to help children
-      build confidence, empathy, self-control, and real-world skills.
+      Clear, calm steps you can use at home or in the classroom.
+      We focus on teaching skills — not blaming children.
     </p>
 
-    <p class="section-sub">
-      Our approach focuses on teaching skills — not punishing behavior —
-      and supporting children in ways that respect their development.
-    </p>
-
-    <hr class="sep" />
-
-    <h2 class="section-title">How we support children</h2>
-
-    <div class="grid-3">
-
-      <div class="card">
-        <h3>1) Observe before reacting</h3>
-        <p>
-          Behavior is communication. We pause to understand what’s underneath —
-          stress, unmet needs, missing skills, or big emotions.
-        </p>
-        <p class="note"><strong>Try:</strong> Ask “What is the child telling me right now?”</p>
+    <div class="steps">
+      <div class="step">
+        <div class="num">1</div>
+        <h3>Observe first</h3>
+        <p>Behavior is communication. Look for needs, stress, or missing skills.</p>
+        <div class="mini">Try: “What is this moment telling me?”</div>
       </div>
 
-      <div class="card">
-        <h3>2) Make the environment work</h3>
-        <p>
-          Small changes in space, timing, or expectations can dramatically
-          improve behavior and learning.
-        </p>
-        <p class="note"><strong>Try:</strong> Visual routines, calm corners, movement breaks.</p>
+      <div class="step">
+        <div class="num">2</div>
+        <h3>Adjust the environment</h3>
+        <p>Small changes reduce friction and increase success.</p>
+        <div class="mini">Try: visuals, quieter space, movement breaks</div>
       </div>
 
-      <div class="card">
-        <h3>3) Teach the missing skill</h3>
-        <p>
-          Children do well when they can. Skills must be taught and practiced —
-          especially during calm moments.
-        </p>
-        <p class="note"><strong>Try:</strong> Practice waiting, sharing, or asking for help during play.</p>
+      <div class="step">
+        <div class="num">3</div>
+        <h3>Teach the skill</h3>
+        <p>Children need practice: waiting, transitions, asking for help.</p>
+        <div class="mini">Try: practice during calm moments</div>
       </div>
 
-      <div class="card">
-        <h3>4) Use calm structure & limits</h3>
-        <p>
-          Clear, predictable boundaries create safety and reduce anxiety —
-          without shame or fear.
-        </p>
-        <p class="note"><strong>Try:</strong> “I won’t let you hurt. I’m here to help.”</p>
+      <div class="step">
+        <div class="num">4</div>
+        <h3>Use calm boundaries</h3>
+        <p>Limits create safety when they’re steady and respectful.</p>
+        <div class="mini">Try: short words, consistent actions</div>
       </div>
 
-      <div class="card">
-        <h3>5) Reinforce progress</h3>
-        <p>
-          Encouragement builds motivation. We notice effort, strategies,
-          and small steps forward.
-        </p>
-        <p class="note"><strong>Try:</strong> Praise the process, not just the outcome.</p>
+      <div class="step">
+        <div class="num">5</div>
+        <h3>Encourage progress</h3>
+        <p>Notice effort and strategies — not perfection.</p>
+        <div class="mini">Try: “You kept trying. That was hard.”</div>
       </div>
 
-      <div class="card">
-        <h3>6) Partner with families</h3>
-        <p>
-          Children thrive when home and school are aligned and supportive.
-        </p>
-        <p class="note"><strong>Try:</strong> Share one consistent routine across settings.</p>
+      <div class="step">
+        <div class="num">6</div>
+        <h3>Partner with families</h3>
+        <p>Children thrive when home and school are aligned.</p>
+        <div class="mini">Try: one shared routine across settings</div>
       </div>
-
     </div>
 
     <hr class="sep" />
 
-    <h2 class="section-title">Where to go next</h2>
-
-    <p class="section-sub">
-      Start with Learning resources for short guides and videos,
-      then explore Parent Guidance for everyday routines and scripts.
-    </p>
-
-    <div class="cta-row">
-      <a class="btn primary" href="learning.html">Go to Learning</a>
-      <a class="btn" href="parents.html">Go to Parent Guidance</a>
+    <div class="card">
+      <h2 class="section-title" style="margin-top:0;">Start here</h2>
+      <p class="section-sub" style="margin-bottom:0;">
+        Visit Learning for videos and short guides. Then use Parent Guidance for routines and scripts.
+      </p>
+      <div class="cta-row" style="margin-top:12px;">
+        <a class="btn primary" href="learning.html">Go to Learning</a>
+        <a class="btn" href="parents.html">Go to Parent Guidance</a>
+      </div>
     </div>
 
     <div class="disclaimer" style="margin-top:18px;">
-      WorldLeaders provides educational guidance only.
-      It does not replace professional diagnosis, therapy, or medical advice.
+      Educational content only. Not medical advice. For diagnosis or therapy, consult qualified professionals.
     </div>
 
   </div>
 </main>
 
 <footer>
-  <div class="container">
-    © <span id="y"></span> WorldLeaders
-  </div>
+  <div class="container">© <span id="y"></span> WorldLeaders</div>
 </footer>
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
