@@ -398,3 +398,41 @@ footer{
   nav{ gap: 8px; }
   nav a{ padding: 7px 8px; font-size: 14px; }
 }
+/* ===== WorldLeaders Logo in Navbar (ADD AT BOTTOM) ===== */
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  font-weight:800;
+  letter-spacing:.2px;
+}
+
+/* Hide the old dot when logo is used */
+.brand .dot{ display:none; }
+
+/* Logo image */
+.brand-logo{
+  height:44px;
+  width:auto;
+  display:block;
+}
+
+/* Optional: keep a clean wordmark text beside logo */
+.brand-text{
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:14px;
+  color:var(--text);
+}
+
+@media (max-width: 768px){
+  .brand-logo{ height:36px; }
+  .brand-text{ font-size:12px; }
+}
+
+@media (max-width: 480px){
+  /* Hide text on very small screens to prevent navbar wrapping */
+  .brand-text{ display:none; }
+}
