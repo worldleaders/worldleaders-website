@@ -6,143 +6,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Learning resources for parents, educators, and caregivers supporting children, including ADHD and neurodiversity." />
 
+  <link rel="stylesheet" href="styles.css" />
+
+  <!-- Page-safe navbar overrides (Learning only) -->
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      color: #222;
-      background: #fff;
-      line-height: 1.7;
+    /* Prevent navbar shift on active link */
+    .navbar nav a{
+      font-weight:600;
+      white-space:nowrap;
+    }
+    .navbar nav a.active{
+      font-weight:600;
+      position:relative;
+    }
+    .navbar nav a.active::after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:-10px;
+      height:2px;
+      background:currentColor;
+      border-radius:2px;
     }
 
-    /* ---------- Layout ---------- */
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 40px 24px;
+    /* Constrain logo so it never breaks nav */
+    .brand-logo{
+      height:40px;
+      max-width:150px;
+      width:auto;
+      object-fit:contain;
+      display:block;
     }
 
-    header {
-      border-bottom: 1px solid #eee;
-      background: #fff;
-    }
-
-    .navbar {
-      max-width: 1100px;
-      margin: auto;
-      padding: 20px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      font-weight: 700;
-      text-decoration: none;
-      color: #111;
-    }
-
-    .brand-dot {
-      width: 10px;
-      height: 10px;
-      background: #111;
-      border-radius: 4px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #333;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    h1 {
-      font-size: 2.6rem;
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-top: 56px;
-      margin-bottom: 12px;
-    }
-
-    h3 {
-      font-size: 1.3rem;
-      margin-bottom: 6px;
-    }
-
-    p {
-      max-width: 760px;
-    }
-
-    /* ---------- Video ---------- */
-    .video-section {
-      margin-top: 36px;
-      background: #f7f8fa;
-      border-radius: 18px;
-      padding: 28px;
-    }
-
-    .video-wrapper {
-      position: relative;
-      width: 100%;
-      padding-top: 56.25%; /* 16:9 */
-      overflow: hidden;
-      border-radius: 14px;
-      background: #000;
-      margin-top: 16px;
-    }
-
-    .video-wrapper video {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    /* ---------- Cards ---------- */
-    .card-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 28px;
-    }
-
-    .card {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 16px;
-      padding: 22px;
-    }
-
-    .try {
-      margin-top: 10px;
-      font-size: 0.95rem;
-      color: #444;
-    }
-
-    .note {
-      font-size: 0.9rem;
-      color: #555;
-      margin-top: 18px;
-    }
-
-    footer {
-      border-top: 1px solid #eee;
-      margin-top: 80px;
-      padding: 24px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
+    @media (max-width:480px){
+      .brand-text{ display:none; }
+      .brand-logo{ height:34px; }
     }
   </style>
 </head>
@@ -150,16 +49,16 @@
 <body>
 
 <header>
-  <div class="navbar">
+  <div class="container navbar">
     <a class="brand" href="index.html" aria-label="World Leaders home">
-    <img src="assets/logo.png" alt="World Leaders" class="brand-logo" />
-    <span class="brand-text">WorldLeaders</span>
+      <img src="assets/logo.png" alt="World Leaders" class="brand-logo" />
+      <span class="brand-text">WorldLeaders</span>
     </a>
 
     <nav>
       <a href="philosophy.html">Philosophy</a>
       <a href="approach.html">Approach</a>
-      <a href="learning.html"><strong>Learning</strong></a>
+      <a class="active" href="learning.html">Learning</a>
       <a href="neurodiversity.html">Neurodiversity</a>
       <a href="parents.html">For Parents</a>
       <a href="resources.html">Resources</a>
@@ -234,8 +133,12 @@
 </main>
 
 <footer>
-  © WorldLeaders · Supporting confident, compassionate children
+  © <span id="y"></span> WorldLeaders · Supporting confident, compassionate children
 </footer>
+
+<script>
+  document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
