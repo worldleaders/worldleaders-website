@@ -1,149 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>WorldLeaders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="WorldLeaders — raising confident, morally aware children through empathy, emotional intelligence, and service." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WorldLeaders – Raising confident, morally aware children through play, connection, and purpose.">
+
+  <link rel="stylesheet" href="styles.css">
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      border-bottom: 1px solid #eee;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #374151;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 60px 40px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 16px;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      max-width: 500px;
+    }
+
+    .buttons {
+      margin-top: 24px;
+    }
+
+    .buttons a {
+      display: inline-block;
+      margin-right: 12px;
+      padding: 12px 20px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .primary {
+      background: #111827;
+      color: white;
+    }
+
+    .secondary {
+      border: 1px solid #d1d5db;
+      color: #111827;
+    }
+
+    .hero img {
+      width: 100%;
+      border-radius: 16px;
+      object-fit: cover;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <div class="brand">
-        <span class="brand-mark" aria-hidden="true"></span>
-        <span class="brand-name">WorldLeaders</span>
-      </div>
 
-      <nav class="menu" aria-label="Primary">
-        <a href="#philosophy">Philosophy</a>
-        <a href="#parents">For Parents</a>
-        <a href="#educators">For Educators</a>
-        <a href="#contact">Contact</a>
-      </nav>
+<header>
+  <strong>WorldLeaders</strong>
+  <nav>
+    <a href="about.html">Philosophy</a>
+    <a href="approach.html">Approach</a>
+    <a href="learning.html">Learning</a>
+    <a href="neurodiversity.html">Neurodiversity</a>
+    <a href="parents.html">For Parents</a>
+    <a href="resources.html">Resources</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div>
+    <h1>Raising confident, morally aware children.</h1>
+    <p>
+      WorldLeaders is a values-driven initiative supporting children’s
+      emotional, social, and cognitive growth through play, connection,
+      and purpose.
+    </p>
+
+    <div class="buttons">
+      <a href="about.html" class="primary">Explore our philosophy</a>
+      <a href="contact.html" class="secondary">Contact us</a>
     </div>
-  </header>
 
-  <main class="container">
+    <p style="margin-top: 20px; font-style: italic;">
+      Website currently under development.
+    </p>
+  </div>
 
-    <!-- HERO -->
-    <section class="hero">
-      <div class="hero-text">
-        <h1>Raising confident, morally aware children.</h1>
-        <p class="lead">
-          WorldLeaders is a values-driven initiative focused on nurturing children who understand empathy,
-          responsibility, emotional awareness, and the importance of giving back to the world around them.
-        </p>
+  <img src="assets/images/Hero-play.png" alt="Children playing joyfully outdoors">
+</section>
 
-        <div class="cta-row">
-          <a class="btn primary" href="#philosophy">Explore our philosophy</a>
-          <a class="btn" href="#contact">Contact us</a>
-        </div>
+<footer>
+  © WorldLeaders • Building brighter futures through understanding
+</footer>
 
-        <p class="note"><em>Website currently under development.</em></p>
-      </div>
-
-      <!-- HERO SLIDESHOW -->
-      <div class="hero-media" aria-label="Joyful moments of children learning through play">
-        <div class="slideshow" role="region" aria-label="WorldLeaders Hero Images">
-          <img src="assets/images/Hero-Joy.png" alt="Children experiencing joy through play" />
-          <img src="assets/images/Hero-nature.png" alt="Children exploring nature together" />
-          <img src="assets/images/Hero-play.png" alt="Children engaged in free play" />
-          <img src="assets/images/Hero-community.png" alt="Children enjoying community and friendship" />
-        </div>
-        <div class="slideshow-hint">Hover to see more</div>
-      </div>
-    </section>
-
-    <!-- PHILOSOPHY -->
-    <section id="philosophy" class="section">
-      <div class="section-head">
-        <h2>Our Philosophy</h2>
-        <p>
-          We support the whole child — emotionally, socially, and cognitively — through play, discovery,
-          guided practice, and meaningful relationships.
-        </p>
-      </div>
-
-      <div class="card">
-        <img
-          class="full-img"
-          src="assets/images/philosophy-infographic.png"
-          alt="WorldLeaders philosophy infographic representing holistic child development"
-        />
-      </div>
-    </section>
-
-    <!-- PARENTS / EDUCATORS -->
-    <section class="section">
-      <div class="grid-2">
-        <div id="parents" class="card">
-          <h2>For Parents</h2>
-          <p>
-            Practical guidance for real life — routines, emotional regulation, respectful boundaries,
-            and support for attention and sensory needs.
-          </p>
-          <img
-            class="img"
-            src="assets/images/parent-education.png"
-            alt="Parent education visual"
-          />
-        </div>
-
-        <div id="educators" class="card">
-          <h2>For Educators</h2>
-          <p>
-            Child-centered strategies that support independence, collaboration, inclusive play,
-            and social-emotional learning.
-          </p>
-          <img
-            class="img"
-            src="assets/images/classroom-play.png"
-            alt="Classroom play and learning visual"
-          />
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="section">
-      <div class="section-head">
-        <h2>Contact Us</h2>
-        <p>If you’re a parent, educator, or organization interested in our work, we’d love to hear from you.</p>
-      </div>
-
-      <div class="card">
-        <form class="contact-form" action="https://formspree.io/f/mrezalkb" method="POST">
-          <label>
-            Your email
-            <input type="email" name="email" placeholder="name@example.com" required />
-          </label>
-
-          <label>
-            Your message or question
-            <textarea name="message" rows="6" placeholder="Tell us what you’re looking for…" required></textarea>
-          </label>
-
-          <!-- Optional: helps Formspree show a nicer subject line -->
-          <input type="hidden" name="_subject" value="New message from WorldLeaders.ca" />
-
-          <button class="btn primary" type="submit">Send Message</button>
-        </form>
-
-        <p class="small">
-          By sending this message, you agree to be contacted by email.
-        </p>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <p>© <span id="y"></span> WorldLeaders.ca</p>
-    </footer>
-  </main>
-
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
