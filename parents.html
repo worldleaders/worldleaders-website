@@ -2,80 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>For Parents | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Parent Guides — WorldLeaders</title>
-  <meta name="description" content="Practical parent guides for routines, behavior, big emotions, confidence, and character-building." />
+  <meta name="description" content="Parent education and practical guidance for everyday situations." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="nav">
-    <div class="container inner">
-      <a class="brand" href="index.html">
-        <span class="logo" aria-hidden="true"></span>
-        <span>WorldLeaders</span>
-      </a>
-      <div class="menu" role="navigation" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="approach.html">Our Approach</a>
-        <a class="active" href="parents.html">Parent Guides</a>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a href="learning.html">Learning</a>
         <a href="neurodiversity.html">Neurodiversity</a>
+        <a class="active" href="parents.html">For Parents</a>
         <a href="resources.html">Resources</a>
         <a href="contact.html">Contact</a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="container section">
-    <div class="card">
-      <div class="kicker">Parent Guides</div>
-      <h1>Practical guidance for real life</h1>
-      <p class="lead">
-        Simple strategies you can use today — built around calm, connection, boundaries, and consistent practice.
+  <main class="section">
+    <div class="container">
+      <h1 style="font-size:42px;margin-top:0;">For Parents</h1>
+      <p class="section-sub">
+        Practical guidance you can use immediately—without guilt or overwhelm. Small steps, consistent connection, clear boundaries.
       </p>
 
-      <hr />
-
-      <div class="grid3">
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Big emotions</h3>
-          <p class="small">How to respond to meltdowns, anger, tears, and overwhelm with calm structure.</p>
-          <p class="small"><strong>Try:</strong> Name the feeling → validate → set boundary → offer 2 choices.</p>
-        </div>
-
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Positive discipline</h3>
-          <p class="small">Clear expectations, consistent consequences, and teaching the skill — without shame.</p>
-          <p class="small"><strong>Try:</strong> “I can’t let you…” + “Here’s what you can do instead…”</p>
-        </div>
-
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Routines & responsibility</h3>
-          <p class="small">Simple routines that build independence and cooperation.</p>
-          <p class="small"><strong>Try:</strong> Morning/bedtime checklists + small chores.</p>
-        </div>
+      <div class="infographic">
+        <img src="assets/images/parent-education.png" alt="Parent education visual" />
       </div>
 
-      <hr />
+      <hr class="sep" />
 
-      <h2>Quick scripts (copy/paste)</h2>
-      <div class="card" style="background:rgba(255,255,255,.02)">
-        <p class="small"><strong>When a child refuses:</strong> “I hear you don’t want to. The rule is ____. You can choose A or B.”</p>
-        <p class="small"><strong>When a child hits:</strong> “I won’t let you hit. Hands are for helping. Let’s take a break and try again.”</p>
-        <p class="small"><strong>When a child lies:</strong> “Thank you for telling me now. In our family, we tell the truth even when it’s hard.”</p>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn primary" href="contact.html">Ask a question</a>
-        <a class="btn" href="resources.html">See tools & printables</a>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Big feelings</h3>
+          <p>Validate, name emotions, and coach coping tools—before problem-solving.</p>
+        </div>
+        <div class="card">
+          <h3>Routines that work</h3>
+          <p>Visual cues, predictable steps, and “first–then” language reduce power struggles.</p>
+        </div>
+        <div class="card">
+          <h3>Behavior support</h3>
+          <p>Clear expectations, logical consequences, and frequent encouragement for effort.</p>
+        </div>
       </div>
     </div>
+  </main>
 
-    <div class="footer">
-      <hr />
-      <p class="small">© <span id="y"></span> WorldLeaders.ca</p>
-    </div>
-  </div>
+  <footer>
+    <div class="container">© <span id="y"></span> WorldLeaders.</div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
