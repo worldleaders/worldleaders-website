@@ -330,6 +330,8 @@ hr.sep{
   overflow:hidden;
   box-shadow: var(--shadow);
   background:#000;
+  aspect-ratio: 16 / 9;
+
 }
 
 .video-wrap video{
