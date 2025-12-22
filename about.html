@@ -2,82 +2,68 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>About | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — WorldLeaders</title>
-  <meta name="description" content="Learn about WorldLeaders — a values-driven initiative helping raise confident, morally aware children through emotional intelligence and service." />
+  <meta name="description" content="About WorldLeaders and our mission." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="nav">
-    <div class="container inner">
-      <a class="brand" href="index.html">
-        <span class="logo" aria-hidden="true"></span>
-        <span>WorldLeaders</span>
-      </a>
-      <div class="menu" role="navigation" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a class="active" href="about.html">About</a>
-        <a href="approach.html">Our Approach</a>
-        <a href="parents.html">Parent Guides</a>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a href="learning.html">Learning</a>
         <a href="neurodiversity.html">Neurodiversity</a>
+        <a href="parents.html">For Parents</a>
         <a href="resources.html">Resources</a>
         <a href="contact.html">Contact</a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="container section">
-    <div class="card">
-      <div class="kicker">About</div>
-      <h1>Why WorldLeaders exists</h1>
-      <p class="lead">
-        We believe leadership begins long before titles — in everyday choices: kindness, honesty,
-        responsibility, and service to others.
+  <main class="section">
+    <div class="container">
+      <h1 style="font-size:42px;margin-top:0;">About WorldLeaders</h1>
+      <p class="section-sub">
+        WorldLeaders is a values-driven initiative focused on nurturing children who understand empathy, responsibility,
+        emotional awareness, and the importance of giving back to the world around them.
       </p>
 
-      <hr />
-
-      <h2>Our mission</h2>
-      <p>
-        To support parents and educators in raising children who are confident, emotionally aware,
-        morally grounded, and prepared to contribute positively to the world.
-      </p>
-
-      <h2>Our values</h2>
-      <div class="grid3">
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Compassion</h3>
-          <p class="small">We teach children to understand feelings — their own and others’ — and respond with care.</p>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Mission</h3>
+          <p>Support whole-child growth—emotionally, socially, cognitively—through play, discovery, and guided practice.</p>
         </div>
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Integrity</h3>
-          <p class="small">Truthfulness, fairness, and doing the right thing even when it’s difficult.</p>
+        <div class="card">
+          <h3>Values</h3>
+          <p>Kindness, dignity, truthfulness, service, and belonging—modeled consistently in daily life.</p>
         </div>
-        <div class="card" style="background:rgba(255,255,255,.02)">
-          <h3>Service</h3>
-          <p class="small">Children learn purpose by giving back — at home, school, and in the community.</p>
+        <div class="card">
+          <h3>Audience</h3>
+          <p>Parents, educators, and community members who want practical tools that work in real life.</p>
         </div>
       </div>
 
-      <hr />
+      <hr class="sep" />
 
-      <h2>Who we support</h2>
-      <p class="small">
-        WorldLeaders is designed for families and educators supporting children across early years and school age.
-        We focus on practical, respectful guidance — not perfection.
-      </p>
-
-      <p class="note">
-        We share educational guidance and resources. We do not provide medical diagnoses or emergency support.
-        For developmental, mental health, or medical concerns, consult a qualified professional.
-      </p>
+      <div class="card">
+        <h2 class="section-title" style="margin-top:0;">What you’ll find here</h2>
+        <ul class="list">
+          <li>Parent guides for routines, emotions, behavior, and relationship skills</li>
+          <li>Educator-friendly strategies for supportive environments</li>
+          <li>Neurodiversity-informed learning content (educational, not medical advice)</li>
+          <li>Printable resources and classroom-friendly visuals (coming soon)</li>
+        </ul>
+      </div>
     </div>
+  </main>
 
-    <div class="footer">
-      <hr />
-      <p class="small">© <span id="y"></span> WorldLeaders.ca</p>
-    </div>
-  </div>
+  <footer>
+    <div class="container">© <span id="y"></span> WorldLeaders.</div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
