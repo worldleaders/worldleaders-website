@@ -333,9 +333,12 @@ hr.sep{
 }
 
 .video-wrap video{
-  width:100%;
-  height:auto;
-  display:block;
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 72vh;     /* keeps it inside the screen */
+  object-fit: contain;  /* prevents cropping */
+  
 }
 
 .disclaimer{
