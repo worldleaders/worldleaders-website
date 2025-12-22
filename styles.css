@@ -436,3 +436,104 @@ footer{
   /* Hide text on very small screens to prevent navbar wrapping */
   .brand-text{ display:none; }
 }
+/* ===== WorldLeaders Chatbot ===== */
+.wl-chatbot{ position:fixed; right:20px; bottom:20px; z-index:9999; font-family:inherit; }
+.wl-chatbot__fab{
+  border:0; cursor:pointer;
+  padding:12px 14px;
+  border-radius:999px;
+  background:#0f172a;
+  color:#fff;
+  font-weight:700;
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+}
+
+.wl-chatbot__panel{
+  position:absolute;
+  right:0;
+  bottom:54px;
+  width:min(360px, calc(100vw - 40px));
+  height:480px;
+  background:#fff;
+  border:1px solid rgba(15,23,42,.12);
+  border-radius:16px;
+  box-shadow:0 18px 60px rgba(0,0,0,.18);
+  display:none;
+  overflow:hidden;
+}
+
+.wl-chatbot__panel.is-open{ display:flex; flex-direction:column; }
+
+.wl-chatbot__header{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:12px 14px;
+  background:#fff;
+  border-bottom:1px solid rgba(15,23,42,.08);
+}
+
+.wl-chatbot__title{ font-weight:800; color:#0f172a; }
+.wl-chatbot__close{ border:0; background:transparent; cursor:pointer; font-size:22px; line-height:1; padding:0 6px; color:#0f172a; }
+
+.wl-chatbot__messages{
+  padding:12px;
+  flex:1;
+  overflow:auto;
+  background:#fafafa;
+}
+
+.wl-chatbot__msg{
+  max-width:88%;
+  padding:10px 12px;
+  border-radius:14px;
+  margin:8px 0;
+  line-height:1.35;
+  font-size:14px;
+}
+
+.wl-chatbot__msg.user{
+  margin-left:auto;
+  background:#0f172a;
+  color:#fff;
+  border-bottom-right-radius:6px;
+}
+
+.wl-chatbot__msg.assistant{
+  margin-right:auto;
+  background:#ffffff;
+  border:1px solid rgba(15,23,42,.08);
+  color:#0f172a;
+  border-bottom-left-radius:6px;
+}
+
+.wl-chatbot__disclaimer{
+  padding:10px 12px;
+  font-size:12px;
+  color:#475569;
+  border-top:1px solid rgba(15,23,42,.08);
+  background:#fff;
+}
+
+.wl-chatbot__footer{
+  display:flex;
+  gap:8px;
+  padding:12px;
+  border-top:1px solid rgba(15,23,42,.08);
+  background:#fff;
+}
+
+.wl-chatbot__input{
+  flex:1;
+  border:1px solid rgba(15,23,42,.18);
+  border-radius:12px;
+  padding:10px 12px;
+  font-size:14px;
+}
+
+.wl-chatbot__send{
+  border:0; cursor:pointer;
+  border-radius:12px;
+  padding:10px 12px;
+  font-weight:700;
+  background:#0f172a;
+  color:#fff;
+}
