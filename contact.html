@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contact — WorldLeaders</title>
+  <meta name="description" content="Contact WorldLeaders. Send a message to connect, ask a question, or request resources." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="nav">
+    <div class="container inner">
+      <a class="brand" href="index.html">
+        <span class="logo" aria-hidden="true"></span>
+        <span>WorldLeaders</span>
+      </a>
+      <div class="menu" role="navigation" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="approach.html">Our Approach</a>
+        <a href="parents.html">Parent Guides</a>
+        <a href="neurodiversity.html">Neurodiversity</a>
+        <a href="resources.html">Resources</a>
+        <a class="active" href="contact.html">Contact</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container section">
+    <div class="card">
+      <div class="kicker">Contact</div>
+      <h1>Get in touch</h1>
+      <p class="lead">
+        If you’re a parent, educator, or organization interested in our work, we’d love to hear from you.
+      </p>
+
+      <div class="note">
+        For urgent safety or medical concerns, contact local emergency services or a qualified professional.
+      </div>
+
+      <hr />
+
+      <form class="form" action="https://formspree.io/f/mrezalkb" method="POST">
+        <label for="email">Your email</label>
+        <input id="email" type="email" name="email" required />
+
+        <label for="message">Your message or question</label>
+        <textarea id="message" name="message" required></textarea>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <p class="small" style="margin-top:12px;">
+        If you prefer, you can also email: <strong>worldleaders.ca.team@gmail.com</strong>
+      </p>
+    </div>
+
+    <div class="footer">
+      <hr />
+      <p class="small">© <span id="y"></span> WorldLeaders.ca</p>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
