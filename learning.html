@@ -4,76 +4,223 @@
   <meta charset="UTF-8" />
   <title>Learning | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Learning resources for parents, educators, and caregivers to better understand children and supportive strategies." />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Learning resources for parents, educators, and caregivers supporting children, including ADHD and neurodiversity." />
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      color: #222;
+      background: #fff;
+      line-height: 1.7;
+    }
+
+    /* ---------- Layout ---------- */
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 40px 24px;
+    }
+
+    header {
+      border-bottom: 1px solid #eee;
+      padding: 20px 24px;
+    }
+
+    header nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    nav a {
+      margin-left: 20px;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-top: 60px;
+      margin-bottom: 16px;
+    }
+
+    h3 {
+      font-size: 1.4rem;
+      margin-bottom: 8px;
+    }
+
+    p {
+      max-width: 760px;
+    }
+
+    /* ---------- Video ---------- */
+    .video-section {
+      margin-top: 40px;
+      background: #f7f8fa;
+      border-radius: 16px;
+      padding: 32px;
+    }
+
+    .video-wrapper {
+      position: relative;
+      width: 100%;
+      padding-top: 56.25%; /* 16:9 ratio */
+      overflow: hidden;
+      border-radius: 12px;
+      background: #000;
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    /* ---------- Cards ---------- */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 32px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 24px;
+    }
+
+    .try {
+      margin-top: 12px;
+      font-size: 0.95rem;
+      color: #444;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 24px;
+    }
+
+    footer {
+      border-top: 1px solid #eee;
+      margin-top: 80px;
+      padding: 24px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #666;
+    }
+  </style>
 </head>
 
 <body>
-  <header>
-    <div class="container navbar">
-      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
-      <nav>
-        <a href="approach.html">Philosophy</a>
-        <a href="approach.html#approach">Approach</a>
-        <a class="active" href="learning.html">Learning</a>
-        <a href="neurodiversity.html">Neurodiversity</a>
-        <a href="parents.html">For Parents</a>
-        <a href="resources.html">Resources</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+
+<header>
+  <nav>
+    <strong>WorldLeaders</strong>
+    <div>
+      <a href="philosophy.html">Philosophy</a>
+      <a href="approach.html">Approach</a>
+      <a href="learning.html">Learning</a>
+      <a href="neurodiversity.html">Neurodiversity</a>
+      <a href="parents.html">For Parents</a>
+      <a href="resources.html">Resources</a>
+      <a href="contact.html">Contact</a>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <main class="section">
-    <div class="container">
-      <h1 style="font-size:42px;margin-top:0;">Learning</h1>
-      <p class="section-sub">
-        Short, practical learning content to help families and educators support children with confidence—starting with attention, regulation, and connection.
-      </p>
+<main class="container">
 
-      <div class="disclaimer" style="margin-bottom:16px;">
-        Educational content only. Not medical advice. If you have urgent concerns or safety risks, contact local services or a qualified professional.
+  <!-- INTRO -->
+  <h1>Learning</h1>
+  <p>
+    This space is designed for parents, educators, and caregivers who want to better
+    understand children — how they learn, how they regulate, and how to support them
+    with empathy and confidence.
+  </p>
+
+  <p>
+    Our learning resources are practical, respectful, and strengths-based.
+    They are educational in nature and meant to complement — not replace —
+    professional support when needed.
+  </p>
+
+  <!-- VIDEO -->
+  <section class="video-section">
+    <h2>Understanding ADHD: Connect Before Correct</h2>
+
+    <p>
+      This short video introduces ADHD through a child-centered lens —
+      focusing on connection, regulation, and support rather than labels or punishment.
+    </p>
+
+    <div class="video-wrapper">
+      <video controls preload="metadata">
+        <source src="assets/videos/ADHD-Understand-Connect.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <p class="note">
+      This content is educational only and does not replace professional assessment or therapy.
+      If you have safety concerns or urgent needs, please contact local services.
+    </p>
+  </section>
+
+  <!-- PRACTICAL STRATEGIES -->
+  <section>
+    <h2>Key Support Principles</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Regulation before expectations</h3>
+        <p>
+          A child who is overwhelmed cannot access learning or self-control.
+        </p>
+        <p class="try"><strong>Try:</strong> Movement breaks, predictable routines, calming input.</p>
       </div>
 
-      <h2 class="section-title" style="margin-top:0;">Featured video: ADHD — Understand & Connect</h2>
-      <p class="section-sub">
-        A supportive overview focused on empathy, daily strategies, and connection-first parenting/teaching.
-      </p>
-
-      <div class="video-wrap">
-        <!-- Upload video to: assets/videos/ADHD-Understand-Connect.mp4 -->
-        <video controls preload="metadata">
-          <source src="assets/videos/ADHD-Understand-Connect.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <div class="card">
+        <h3>Make the environment work</h3>
+        <p>
+          Many challenges disappear when the environment is adapted thoughtfully.
+        </p>
+        <p class="try"><strong>Try:</strong> Visual schedules, quiet spaces, reduced distractions.</p>
       </div>
 
-      <hr class="sep" />
-
-      <h2 class="section-title">Next topics (coming soon)</h2>
-      <div class="grid-3">
-        <div class="card">
-          <h3>Emotional regulation</h3>
-          <p>Calm-down plans, co-regulation, and building coping skills.</p>
-        </div>
-        <div class="card">
-          <h3>Transitions</h3>
-          <p>Visual schedules, “first–then”, and smoother routines at home and school.</p>
-        </div>
-        <div class="card">
-          <h3>Friendship skills</h3>
-          <p>Turn-taking, repairing conflicts, and building belonging through play.</p>
-        </div>
+      <div class="card">
+        <h3>Teach skills explicitly</h3>
+        <p>
+          Skills like waiting, transitioning, and focusing must be taught — not assumed.
+        </p>
+        <p class="try"><strong>Try:</strong> Practice during calm moments, not only during conflict.</p>
       </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <div class="container">© <span id="y"></span> WorldLeaders.</div>
-  </footer>
+</main>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
+<footer>
+  © WorldLeaders · Supporting confident, compassionate children
+</footer>
+
 </body>
 </html>
