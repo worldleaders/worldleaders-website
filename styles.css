@@ -14,8 +14,15 @@
   --max:1160px;
 }
 
+/* Prevent browsers from auto-inverting colors for “dark mode” */
+html{
+  color-scheme: light;
+  -webkit-text-size-adjust: 100%;
+}
+
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
+
 body{
   font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   color:var(--text);
@@ -49,20 +56,34 @@ header{
   gap: 18px;
 }
 
+/* Brand */
 .brand{
   display:flex;
   align-items:center;
-  gap: 10px;
-  font-weight: 800;
-  letter-spacing: .2px;
+  gap:12px;
+  font-weight:800;
+  letter-spacing:.2px;
+  min-width: 0;
 }
 
-.brand .dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 4px;
-  background: var(--brand);
-  display:inline-block;
+/* Hide old dot if present */
+.brand .dot{ display:none; }
+
+/* Bigger logo on desktop */
+.brand-logo{
+  height:52px;
+  width:auto;
+  display:block;
+}
+
+/* Wordmark text */
+.brand-text{
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  font-size:14px;
+  color:var(--text);
+  white-space:nowrap;
 }
 
 nav{
@@ -95,12 +116,16 @@ nav a.active{
   padding: 54px 0 30px;
 }
 
+/* Keep image on the right for more screen widths */
 .hero-grid{
   display:grid;
   grid-template-columns: 1.1fr .9fr;
   gap: 28px;
   align-items:center;
 }
+
+/* Helps prevent weird shrinking/overflow issues in grids */
+.hero-copy{ min-width: 0; }
 
 .h-eyebrow{
   color: var(--muted);
@@ -157,13 +182,6 @@ h1{
   background: #0a1020;
 }
 
-.note{
-  margin-top: 14px;
-  color: var(--muted);
-  font-style: italic;
-  font-weight: 600;
-}
-
 .hero-media{
   position: relative;
   border-radius: var(--radius2);
@@ -171,6 +189,7 @@ h1{
   box-shadow: var(--shadow);
   background: #f8fafc;
   border: 1px solid var(--border);
+  min-width: 0;
 }
 
 /* Slideshow */
@@ -331,16 +350,14 @@ hr.sep{
   box-shadow: var(--shadow);
   background:#000;
   aspect-ratio: 16 / 9;
-
 }
 
 .video-wrap video{
   width: 100%;
   height: auto;
   display: block;
-  max-height: 72vh;     /* keeps it inside the screen */
-  object-fit: contain;  /* prevents cropping */
-  
+  max-height: 72vh;
+  object-fit: contain;
 }
 
 .disclaimer{
@@ -352,15 +369,17 @@ hr.sep{
   border-radius: 14px;
 }
 
-/* Forms */
-form{
-  margin-top: 10px;
-}
+/* Forms (more consistent across browsers) */
+form{ margin-top: 10px; }
 
 label{
   display:block;
   font-weight: 800;
   margin: 12px 0 6px;
+}
+
+input, textarea, button{
+  font: inherit;
 }
 
 input, textarea{
@@ -370,6 +389,10 @@ input, textarea{
   border: 1px solid var(--border);
   font-size: 15px;
   outline: none;
+  background: #fff;
+  color: var(--text);
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 input:focus, textarea:focus{
@@ -387,55 +410,30 @@ footer{
 }
 
 /* Responsive */
-@media (max-width: 960px){
+/* Hero now stacks later (860px) so desktop/tablet keeps image on right */
+@media (max-width: 860px){
   .hero-grid{ grid-template-columns: 1fr; }
   .grid-3{ grid-template-columns: 1fr; }
   .media-card{ grid-template-columns: 1fr; }
   .slides{ min-height: 260px; }
 }
 
+/* Navbar + logo scale down */
+@media (max-width: 768px){
+  .brand-logo{ height:40px; }
+  .brand-text{ font-size:12px; }
+}
+
+/* Very small screens */
 @media (max-width: 520px){
   nav{ gap: 8px; }
   nav a{ padding: 7px 8px; font-size: 14px; }
 }
-/* ===== WorldLeaders Logo in Navbar (ADD AT BOTTOM) ===== */
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  letter-spacing:.2px;
-}
-
-/* Hide the old dot when logo is used */
-.brand .dot{ display:none; }
-
-/* Logo image */
-.brand-logo{
-  height:44px;
-  width:auto;
-  display:block;
-}
-
-/* Optional: keep a clean wordmark text beside logo */
-.brand-text{
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-size:14px;
-  color:var(--text);
-}
-
-@media (max-width: 768px){
-  .brand-logo{ height:36px; }
-  .brand-text{ font-size:12px; }
-}
 
 @media (max-width: 480px){
-  /* Hide text on very small screens to prevent navbar wrapping */
   .brand-text{ display:none; }
 }
+
 /* ===== WorldLeaders Chatbot ===== */
 .wl-chatbot{ position:fixed; right:20px; bottom:20px; z-index:9999; font-family:inherit; }
 .wl-chatbot__fab{
