@@ -4,12 +4,52 @@
   <meta charset="UTF-8" />
   <title>Philosophy | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Our philosophy for supporting confident, morally aware children through play, connection, and guidance." />
+  <meta name="description" content="Our philosophy for raising confident, morally aware children through play, connection, and purpose." />
   <link rel="stylesheet" href="styles.css" />
+
+  <style>
+    .pillars{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .pblock{
+      border-radius: var(--radius2);
+      padding: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      background: #fff;
+    }
+    .pblock h3{ margin: 0 0 6px; font-size: 18px; }
+    .pblock p{ margin: 0; color: var(--muted); font-weight: 600; }
+    .tag{
+      display:inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .25px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      border: 1px solid rgba(15,23,42,.08);
+      background: rgba(15,23,42,.03);
+      color: var(--text);
+    }
+    .color-1{ background: rgba(34,197,94,.08); }
+    .color-2{ background: rgba(59,130,246,.08); }
+    .color-3{ background: rgba(245,158,11,.10); }
+    .color-4{ background: rgba(168,85,247,.10); }
+    .color-5{ background: rgba(239,68,68,.10); }
+    .wide{
+      grid-column: 1 / -1;
+    }
+    @media (max-width: 900px){
+      .pillars{ grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
-
 <header>
   <div class="container navbar">
     <a class="brand" href="index.html">
@@ -33,117 +73,76 @@
   <div class="container">
 
     <h1 style="font-size:42px;margin-top:0;">Our Philosophy</h1>
-
     <p class="section-sub">
-      WorldLeaders supports the whole child — emotionally, socially, cognitively, and morally —
-      through play, discovery, guided practice, and meaningful relationships.
+      We help children grow into confident, morally aware leaders through play, belonging, and purpose.
+      Short, practical guidance — easy to understand and apply.
     </p>
 
-    <p class="section-sub">
-      We believe leadership begins in childhood with empathy, self-awareness, responsibility,
-      and a sense of service to others.
-    </p>
+    <div class="infographic" style="margin-top:14px;">
+      <img src="assets/images/philosophy-infographic.png" alt="WorldLeaders philosophy infographic" />
+    </div>
 
     <hr class="sep" />
 
-    <h2 class="section-title">Five principles that guide our work</h2>
+    <h2 class="section-title">Our 5 Pillars</h2>
+    <p class="section-sub">
+      Designed for real life — home, classroom, and community.
+    </p>
 
-    <div class="grid-3">
-
-      <div class="card">
+    <div class="pillars">
+      <div class="pblock color-1">
+        <div class="tag">Pillar 1</div>
         <h3>Whole-Child Growth</h3>
-        <p>
-          Children thrive when emotional regulation, thinking, movement, and belonging
-          are supported together — not treated as separate skills.
-        </p>
-        <p class="note">
-          <strong>In practice:</strong> We look at sleep, stress, sensory needs, and relationships
-          before setting expectations.
-        </p>
+        <p>Emotions, thinking, movement, and belonging develop together.</p>
       </div>
 
-      <div class="card">
-        <h3>Learning Through Play</h3>
-        <p>
-          Play is how children explore ideas, test limits, and build confidence.
-          It is the foundation of deep learning.
-        </p>
-        <p class="note">
-          <strong>In practice:</strong> Open-ended materials, pretend play, building,
-          outdoor exploration, and creativity.
-        </p>
+      <div class="pblock color-2">
+        <div class="tag">Pillar 2</div>
+        <h3>Play = Learning</h3>
+        <p>Children build confidence and skills through hands-on exploration.</p>
       </div>
 
-      <div class="card">
+      <div class="pblock color-3">
+        <div class="tag">Pillar 3</div>
         <h3>Connection & Belonging</h3>
-        <p>
-          Children learn best in safe, respectful relationships where they feel seen
-          and understood.
-        </p>
-        <p class="note">
-          <strong>In practice:</strong> Adults model calm communication, repair after conflict,
-          and inclusive routines.
-        </p>
+        <p>Safe relationships make cooperation and learning possible.</p>
       </div>
 
-      <div class="card">
+      <div class="pblock color-4">
+        <div class="tag">Pillar 4</div>
         <h3>Guided Independence</h3>
-        <p>
-          Independence grows when children are given structure, choice,
-          and support — gradually.
-        </p>
-        <p class="note">
-          <strong>In practice:</strong> Visual routines, “first-then” steps,
-          and predictable transitions.
-        </p>
+        <p>Choice within boundaries helps children grow self-control.</p>
       </div>
 
-      <div class="card">
-        <h3>Strengths Before Labels</h3>
-        <p>
-          Every child has a unique brain and learning style.
-          We focus on strengths and support needs — not blame or stigma.
-        </p>
-        <p class="note">
-          <strong>In practice:</strong> Adapting environments and expectations
-          while protecting dignity and confidence.
-        </p>
+      <div class="pblock color-5 wide">
+        <div class="tag">Pillar 5</div>
+        <h3>Service & Responsibility</h3>
+        <p>Leadership begins with kindness, contribution, and care for others.</p>
       </div>
-
     </div>
 
     <hr class="sep" />
 
-    <h2 class="section-title">What this means for families and educators</h2>
-
-    <p class="section-sub">
-      You’ll find practical guidance, calm strategies, and respectful tools
-      to support children in everyday moments — from emotions and transitions
-      to attention and learning.
-    </p>
-
-    <div class="cta-row">
-      <a class="btn primary" href="parents.html">Explore parent guidance</a>
-      <a class="btn" href="learning.html">Visit learning resources</a>
-    </div>
-
-    <div class="disclaimer" style="margin-top:18px;">
-      Educational content only. This does not replace professional assessment or therapy.
-      For urgent concerns or safety risks, contact local services or qualified professionals.
+    <div class="card">
+      <h2 class="section-title" style="margin-top:0;">Want the practical version?</h2>
+      <p class="section-sub" style="margin-bottom:0;">
+        See how we turn these pillars into everyday routines, language, and support strategies.
+      </p>
+      <div class="cta-row" style="margin-top:12px;">
+        <a class="btn primary" href="approach.html">Explore our Approach</a>
+        <a class="btn" href="learning.html">Go to Learning</a>
+      </div>
     </div>
 
   </div>
 </main>
 
 <footer>
-  <div class="container">
-    © <span id="y"></span> WorldLeaders
-  </div>
+  <div class="container">© <span id="y"></span> WorldLeaders</div>
 </footer>
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
-
 </body>
 </html>
