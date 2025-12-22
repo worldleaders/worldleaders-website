@@ -1,101 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Learning | WorldLeaders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      max-width: 1000px;
-      margin: auto;
-      padding: 40px 24px;
-      line-height: 1.7;
-      color: #1f2937;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 60px;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #374151;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    h1 {
-      font-size: 2.6rem;
-      margin-bottom: 16px;
-    }
-
-    h2 {
-      margin-top: 60px;
-      font-size: 2rem;
-    }
-
-    p {
-      max-width: 800px;
-    }
-
-    video {
-      width: 100%;
-      max-width: 900px;
-      margin-top: 30px;
-      border-radius: 16px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Learning resources for parents, educators, and caregivers to better understand children and supportive strategies." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a class="active" href="learning.html">Learning</a>
+        <a href="neurodiversity.html">Neurodiversity</a>
+        <a href="parents.html">For Parents</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-<header>
-  <strong>WorldLeaders</strong>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">Philosophy</a>
-    <a href="approach.html">Approach</a>
-    <a href="learning.html">Learning</a>
-    <a href="parents.html">For Parents</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <main class="section">
+    <div class="container">
+      <h1 style="font-size:42px;margin-top:0;">Learning</h1>
+      <p class="section-sub">
+        Short, practical learning content to help families and educators support children with confidence—starting with attention, regulation, and connection.
+      </p>
 
-<h1>Learning & Understanding</h1>
+      <div class="disclaimer" style="margin-bottom:16px;">
+        Educational content only. Not medical advice. If you have urgent concerns or safety risks, contact local services or a qualified professional.
+      </div>
 
-<p>
-This space is designed to help parents, educators, and caregivers
-better understand children — how they think, feel, process, and grow.
-We focus on empathy, awareness, and practical support.
-</p>
+      <h2 class="section-title" style="margin-top:0;">Featured video: ADHD — Understand & Connect</h2>
+      <p class="section-sub">
+        A supportive overview focused on empathy, daily strategies, and connection-first parenting/teaching.
+      </p>
 
-<h2>Understanding ADHD with Compassion</h2>
+      <div class="video-wrap">
+        <!-- Upload video to: assets/videos/ADHD-Understand-Connect.mp4 -->
+        <video controls preload="metadata">
+          <source src="assets/videos/ADHD-Understand-Connect.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
 
-<p>
-ADHD is not a flaw or failure — it is a different way of experiencing
-the world. With understanding, structure, and connection, children
-with ADHD can thrive emotionally, socially, and academically.
-</p>
+      <hr class="sep" />
 
-<video controls>
-  <source src="assets/videos/ADHD_ Understand & Connect.mp4" type="video/mp4">
-  Your browser does not support the video tag.
-</video>
+      <h2 class="section-title">Next topics (coming soon)</h2>
+      <div class="grid-3">
+        <div class="card">
+          <h3>Emotional regulation</h3>
+          <p>Calm-down plans, co-regulation, and building coping skills.</p>
+        </div>
+        <div class="card">
+          <h3>Transitions</h3>
+          <p>Visual schedules, “first–then”, and smoother routines at home and school.</p>
+        </div>
+        <div class="card">
+          <h3>Friendship skills</h3>
+          <p>Turn-taking, repairing conflicts, and building belonging through play.</p>
+        </div>
+      </div>
+    </div>
+  </main>
 
-<p style="margin-top: 30px;">
-More learning resources for parents, teachers, and children will be
-added here over time.
-</p>
+  <footer>
+    <div class="container">© <span id="y"></span> WorldLeaders.</div>
+  </footer>
 
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
