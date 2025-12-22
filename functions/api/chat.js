@@ -31,7 +31,7 @@ export async function onRequest(context) {
       request.headers.get("x-forwarded-for") ||
       "unknown";
 
-    const limit = 3;
+    const limit = 6;
     const windowSeconds = 24 * 60 * 60; // 24h rolling window
 
     const rl = await rateLimitCheck({ ip, limit, windowSeconds });
