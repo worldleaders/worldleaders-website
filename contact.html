@@ -2,64 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Contact | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — WorldLeaders</title>
-  <meta name="description" content="Contact WorldLeaders. Send a message to connect, ask a question, or request resources." />
+  <meta name="description" content="Contact WorldLeaders." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="nav">
-    <div class="container inner">
-      <a class="brand" href="index.html">
-        <span class="logo" aria-hidden="true"></span>
-        <span>WorldLeaders</span>
-      </a>
-      <div class="menu" role="navigation" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="approach.html">Our Approach</a>
-        <a href="parents.html">Parent Guides</a>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a href="learning.html">Learning</a>
         <a href="neurodiversity.html">Neurodiversity</a>
+        <a href="parents.html">For Parents</a>
         <a href="resources.html">Resources</a>
         <a class="active" href="contact.html">Contact</a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="container section">
-    <div class="card">
-      <div class="kicker">Contact</div>
-      <h1>Get in touch</h1>
-      <p class="lead">
+  <main class="section">
+    <div class="container">
+      <h1 style="font-size:42px;margin-top:0;">Contact</h1>
+      <p class="section-sub">
         If you’re a parent, educator, or organization interested in our work, we’d love to hear from you.
       </p>
 
-      <div class="note">
-        For urgent safety or medical concerns, contact local emergency services or a qualified professional.
+      <div class="card">
+        <form action="https://formspree.io/f/mrezalkb" method="POST">
+          <input type="hidden" name="_subject" value="New message from WorldLeaders website" />
+          <label for="email">Your email</label>
+          <input id="email" type="email" name="email" required placeholder="name@example.com" />
+
+          <label for="message">Your message</label>
+          <textarea id="message" name="message" required placeholder="How can we help?"></textarea>
+
+          <div class="cta-row">
+            <button class="btn primary" type="submit">Send message</button>
+            <a class="btn" href="index.html">Back to home</a>
+          </div>
+        </form>
       </div>
-
-      <hr />
-
-      <form class="form" action="https://formspree.io/f/mrezalkb" method="POST">
-        <label for="email">Your email</label>
-        <input id="email" type="email" name="email" required />
-
-        <label for="message">Your message or question</label>
-        <textarea id="message" name="message" required></textarea>
-
-        <button type="submit">Send Message</button>
-      </form>
-
-      <p class="small" style="margin-top:12px;">
-        If you prefer, you can also email: <strong>worldleaders.ca.team@gmail.com</strong>
-      </p>
     </div>
+  </main>
 
-    <div class="footer">
-      <hr />
-      <p class="small">© <span id="y"></span> WorldLeaders.ca</p>
-    </div>
-  </div>
+  <footer>
+    <div class="container">© <span id="y"></span> WorldLeaders.</div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
