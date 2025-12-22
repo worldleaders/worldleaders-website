@@ -6,43 +6,61 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Learning resources for parents, educators, and caregivers supporting children, including ADHD and neurodiversity." />
 
-  <link rel="stylesheet" href="styles.css" />
+  <!-- Prevent browsers from auto-inverting colors for “dark mode” -->
+  <meta name="color-scheme" content="light" />
 
-  <!-- Page-safe navbar overrides (Learning only) -->
+  <!-- Cache-buster so Brave/others don’t keep an older CSS file -->
+  <link rel="stylesheet" href="styles.css?v=20251222-1" />
+
+  <!-- Minimal page-specific fixes (only what we truly need) -->
   <style>
-    /* Prevent navbar shift on active link */
-    .navbar nav a{
-      font-weight:600;
-      white-space:nowrap;
-    }
+    /* Highlight active page without changing layout */
     .navbar nav a.active{
-      font-weight:600;
-      position:relative;
-    }
-    .navbar nav a.active::after{
-      content:"";
-      position:absolute;
-      left:0;
-      right:0;
-      bottom:-10px;
-      height:2px;
-      background:currentColor;
-      border-radius:2px;
+      color: var(--text);
+      background: rgba(15,23,42,.08);
+      text-decoration: none;
     }
 
-    /* Constrain logo so it never breaks nav */
-    .brand-logo{
-      height:40px;
-      max-width:150px;
-      width:auto;
-      object-fit:contain;
-      display:block;
+    /* Ensure video wrapper uses the same styling as .video-wrap */
+    .video-wrapper{
+      border: 1px solid var(--border);
+      border-radius: var(--radius2);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: #000;
+      aspect-ratio: 16 / 9;
+    }
+    .video-wrapper video{
+      width: 100%;
+      height: auto;
+      display: block;
+      max-height: 72vh;
+      object-fit: contain;
     }
 
-    @media (max-width:480px){
-      .brand-text{ display:none; }
-      .brand-logo{ height:34px; }
+    /* If your base CSS doesn't define these, this makes the cards responsive */
+    .card-grid{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 14px;
     }
+    @media (max-width: 860px){
+      .card-grid{ grid-template-columns: 1fr; }
+    }
+
+    /* Small helper styles */
+    .note{
+      color: var(--muted);
+      font-weight: 650;
+      background: rgba(15,23,42,.04);
+      border: 1px solid var(--border);
+      padding: 14px 16px;
+      border-radius: 14px;
+      margin-top: 14px;
+    }
+    .try{ color: var(--muted); font-weight: 650; }
+    main.container{ padding: 28px 0 54px; }
   </style>
 </head>
 
@@ -50,12 +68,12 @@
 
 <header>
   <div class="container navbar">
-    <a class="brand" href="index.html" aria-label="World Leaders home">
-      <img src="assets/logo.png" alt="World Leaders" class="brand-logo" />
+    <a class="brand" href="index.html" aria-label="WorldLeaders home">
+      <img src="assets/logo.png" alt="WorldLeaders" class="brand-logo" />
       <span class="brand-text">WorldLeaders</span>
     </a>
 
-    <nav>
+    <nav aria-label="Primary navigation">
       <a href="philosophy.html">Philosophy</a>
       <a href="approach.html">Approach</a>
       <a class="active" href="learning.html">Learning</a>
@@ -133,12 +151,15 @@
 </main>
 
 <footer>
-  © <span id="y"></span> WorldLeaders · Supporting confident, compassionate children
+  <div class="container">
+    © <span id="y"></span> WorldLeaders · Supporting confident, compassionate children
+  </div>
 </footer>
 
 <script>
   document.getElementById("y").textContent = new Date().getFullYear();
 </script>
+
 <!-- WorldLeaders AI Chatbot -->
 <script src="assets/chatbot.js"></script>
 </body>
