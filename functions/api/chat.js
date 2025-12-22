@@ -1,94 +1,118 @@
-export async function onRequestPost(context) {
+// functions/api/chat.js
+
+export async function onRequest(context) {
+  const { request, env } = context;
+
+  // Optional: make GET show a friendly message (prevents the "unstyled homepage" confusion)
+  if (request.method === "GET") {
+    return new Response(
+      "WorldLeaders Chat API. Send a POST with JSON: {\"message\":\"...\"}",
+      { headers: { "content-type": "text/plain; charset=utf-8" } }
+    );
+  }
+
+  if (request.method !== "POST") {
+    return new Response("Method Not Allowed", { status: 405 });
+  }
+
   try {
-    const { request, env } = context;
+    const { message } = await request.json();
 
-    const body = await request.json().catch(() => ({}));
-    const userMessage = (body?.message || "").toString().trim();
-    if (!userMessage) return json({ error: "Missing message" }, 400);
+    if (!message || typeof message !== "string") {
+      return new Response(JSON.stringify({ error: "Missing 'message' string" }), {
+        status: 400,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
 
-    const OPENAI_API_KEY = env.OPENAI_API_KEY;
-    const VECTOR_STORE_ID = env.OPENAI_VECTOR_STORE_ID;
-    const model = env.OPENAI_MODEL || "gpt-4.1-mini";
+    if (!env.OPENAI_API_KEY) {
+      return new Response(JSON.stringify({ error: "Missing OPENAI_API_KEY" }), {
+        status: 500,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
 
-    if (!OPENAI_API_KEY) return json({ error: "Missing OPENAI_API_KEY" }, 500);
-    if (!VECTOR_STORE_ID) return json({ error: "Missing OPENAI_VECTOR_STORE_ID" }, 500);
+    if (!env.OPENAI_VECTOR_STORE_ID) {
+      return new Response(JSON.stringify({ error: "Missing OPENAI_VECTOR_STORE_ID" }), {
+        status: 500,
+        headers: { "content-type": "application/json; charset=utf-8" },
+      });
+    }
 
-    const system = [
-      "You are the WorldLeaders Assistant for parents and educators.",
-      "Be calm, supportive, and practical. Use short paragraphs and bullets when helpful.",
-      "Educational content only. Not medical advice. Do not diagnose or prescribe.",
-      "If asked for medical advice: encourage consulting qualified professionals.",
-      "If user mentions self-harm, abuse, or immediate danger: advise contacting local emergency services or trusted local resources.",
-      "Use file_search to ground answers in the provided WorldLeaders documents.",
-    ].join("\n");
-
-    // ✅ Responses API payload (this is the key change)
-    const payload = {
-      model,
-      input: [
-        { role: "system", content: system },
-        { role: "user", content: userMessage },
-      ],
-      tools: [{ type: "file_search" }],
-      tool_resources: {
-        file_search: {
-          vector_store_ids: [VECTOR_STORE_ID],
-        },
-      },
-    };
-
-    const resp = await fetch("https://api.openai.com/v1/responses", {
+    // Call OpenAI Responses API
+    const res = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
+        Authorization: `Bearer ${env.OPENAI_API_KEY}`,
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify({
+        model: "gpt-4.1-mini",
+        input: [
+          {
+            role: "system",
+            content:
+              "You are the WorldLeaders assistant for parents and educators. Be warm, concise, practical. If unsure, ask a clarifying question.",
+          },
+          { role: "user", content: message },
+        ],
+        tools: [
+          {
+            type: "file_search",
+            vector_store_ids: [env.OPENAI_VECTOR_STORE_ID],
+            max_num_results: 5,
+          },
+        ],
+      }),
     });
 
-    const data = await resp.json().catch(() => ({}));
+    const data = await res.json();
 
-    if (!resp.ok) {
-      // Surface the OpenAI error to you (helps debugging)
-      return json(
-        { error: data?.error?.message || `OpenAI error (${resp.status})` },
-        500
+    if (!res.ok) {
+      return new Response(
+        JSON.stringify({
+          error: data?.error?.message || "OpenAI error",
+          details: data,
+        }),
+        {
+          status: 500,
+          headers: { "content-type": "application/json; charset=utf-8" },
+        }
       );
     }
 
-    const answer = extractAnswerText(data);
-    return json({ answer: answer || "Sorry — I couldn’t generate a response." }, 200);
-  } catch (e) {
-    return json({ error: "Server error" }, 500);
+    // Extract the assistant text from the Responses API result
+    const outputText =
+      (data.output || [])
+        .flatMap((item) => item.content || [])
+        .filter((c) => c.type === "output_text")
+        .map((c) => c.text)
+        .join("\n\n") || "Sorry — I couldn’t generate a response.";
+
+    // Basic CORS (so your website JS can call /api/chat)
+    return new Response(JSON.stringify({ answer: outputText, raw: data }), {
+      headers: {
+        "content-type": "application/json; charset=utf-8",
+        "access-control-allow-origin": "*",
+        "access-control-allow-methods": "POST, GET, OPTIONS",
+        "access-control-allow-headers": "Content-Type, Authorization",
+      },
+    });
+  } catch (err) {
+    return new Response(JSON.stringify({ error: err?.message || String(err) }), {
+      status: 500,
+      headers: { "content-type": "application/json; charset=utf-8" },
+    });
   }
 }
 
-function json(obj, status = 200) {
-  return new Response(JSON.stringify(obj), {
-    status,
-    headers: { "Content-Type": "application/json" },
+// Handle OPTIONS preflight
+export async function onRequestOptions() {
+  return new Response(null, {
+    headers: {
+      "access-control-allow-origin": "*",
+      "access-control-allow-methods": "POST, GET, OPTIONS",
+      "access-control-allow-headers": "Content-Type, Authorization",
+    },
   });
-}
-
-// Handles Responses API output shapes safely
-function extractAnswerText(data) {
-  if (typeof data?.output_text === "string" && data.output_text.trim()) {
-    return data.output_text.trim();
-  }
-
-  const out = data?.output;
-  if (Array.isArray(out)) {
-    let text = "";
-    for (const item of out) {
-      const content = item?.content;
-      if (!Array.isArray(content)) continue;
-      for (const c of content) {
-        if (c?.type === "output_text" && typeof c?.text === "string") text += c.text;
-        if (c?.type === "text" && typeof c?.text === "string") text += c.text;
-      }
-    }
-    return text.trim();
-  }
-
-  return "";
 }
