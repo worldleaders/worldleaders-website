@@ -8,7 +8,7 @@
 </head>
 
 <body style="font-family: Arial, sans-serif; max-width: 900px; margin: auto; padding: 40px; line-height: 1.6;">
-  
+
   <h1>WorldLeaders</h1>
 
   <p><strong>Raising confident, morally aware children.</strong></p>
@@ -30,32 +30,42 @@
   </p>
 
   <p><em>Website currently under development.</em></p>
-<hr>
 
-<h2>Contact Us</h2>
+  <hr>
 
-<p>
-If you’re a parent, educator, or organization interested in our work,
-we’d love to hear from you.
-</p>
-
-<form action="https://formspree.io/f/mrezalkb" method="POST">
-  <p>
-    <label>
-      Your email:<br>
-      <input type="email" name="email" required>
-    </label>
-  </p>
+  <h2>Contact Us</h2>
 
   <p>
-    <label>
-      Message:<br>
-      <textarea name="message" rows="5" required></textarea>
-    </label>
+    If you’re a parent, educator, or organization interested in our work,
+    we’d love to hear from you.
   </p>
 
-  <button type="submit">Send Message</button>
-</form>
+  <form action="https://formspree.io/f/mrezalkb" method="POST">
+
+    <!-- Redirect back to site after submission -->
+    <input type="hidden" name="_redirect" value="https://worldleaders.ca/">
+
+    <!-- Spam protection (honeypot field) -->
+    <input type="text" name="_gotcha" style="display:none">
+
+    <p>
+      <label>
+        Your email:<br>
+        <input type="email" name="email" required>
+      </label>
+    </p>
+
+    <p>
+      <label>
+        Your message or question:<br>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+    </p>
+
+    <button type="submit">Send Message</button>
+
+  </form>
 
 </body>
 </html>
+
