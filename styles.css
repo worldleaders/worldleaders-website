@@ -7,7 +7,6 @@
   --shadow: 0 12px 30px rgba(2,6,23,.08);
   --shadow2: 0 10px 22px rgba(2,6,23,.06);
   --brand:#0f172a;
-  --brand2:#111827;
   --accent:#0b1220;
   --radius:18px;
   --radius2:26px;
@@ -32,6 +31,9 @@ img{ max-width:100%; display:block; }
   margin: 0 auto;
 }
 
+/* =========================
+   HEADER + NAV (STABLE)
+   ========================= */
 header{
   position: sticky;
   top: 0;
@@ -45,24 +47,37 @@ header{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding: 16px 0;
-  gap: 18px;
+  padding: 14px 0;
+  gap: 14px;
 }
 
 .brand{
   display:flex;
   align-items:center;
-  gap: 10px;
+  gap: 12px;
   font-weight: 800;
   letter-spacing: .2px;
+  min-width: 0;
+  white-space: nowrap;
 }
 
-.brand .dot{
-  width: 10px;
-  height: 10px;
-  border-radius: 4px;
-  background: var(--brand);
-  display:inline-block;
+/* If you still have <span class="dot"> in HTML, hide it */
+.brand .dot{ display:none; }
+
+/* Logo image (desktop + mobile sizes) */
+.brand-logo{
+  height: 44px;      /* bigger on desktop */
+  width: auto;
+  display:block;
+}
+
+/* Optional wordmark text beside logo */
+.brand-text{
+  font-weight: 900;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: var(--text);
 }
 
 nav{
@@ -70,11 +85,12 @@ nav{
   align-items:center;
   gap: 16px;
   flex-wrap: wrap;
+  justify-content: flex-end;
 }
 
 nav a{
   color: var(--muted);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 14.5px;
   padding: 8px 10px;
   border-radius: 10px;
@@ -91,6 +107,39 @@ nav a.active{
   background: rgba(15,23,42,.08);
 }
 
+/* Mobile: brand on top, nav below, centered */
+@media (max-width: 820px){
+  .navbar{
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 12px 0;
+  }
+
+  .brand{
+    width:100%;
+    justify-content:center;
+  }
+
+  nav{
+    width:100%;
+    justify-content:center;
+    gap: 10px 14px;
+    padding-top: 8px;
+  }
+
+  .brand-logo{ height: 34px; }
+  .brand-text{ font-size: 12px; }
+}
+
+/* Very small phones: hide brand text to avoid wrapping */
+@media (max-width: 480px){
+  .brand-text{ display:none; }
+  nav a{ padding: 7px 8px; font-size: 14px; }
+}
+
+/* =========================
+   HERO
+   ========================= */
 .hero{
   padding: 54px 0 30px;
 }
@@ -137,7 +186,7 @@ h1{
   border-radius: 12px;
   border: 1px solid var(--border);
   background: white;
-  font-weight: 700;
+  font-weight: 800;
   color: var(--text);
   box-shadow: 0 1px 0 rgba(2,6,23,.04);
 }
@@ -205,11 +254,8 @@ h1{
 }
 
 /* Pause on hover */
-.hero-media:hover .slides img{
-  animation-play-state: paused;
-}
+.hero-media:hover .slides img{ animation-play-state: paused; }
 
-/* Small hint */
 .hover-hint{
   position:absolute;
   left: 14px;
@@ -220,9 +266,12 @@ h1{
   border-radius: 12px;
   font-size: 12.5px;
   color: var(--muted);
-  font-weight: 700;
+  font-weight: 800;
 }
 
+/* =========================
+   SECTIONS + CARDS
+   ========================= */
 .section{
   padding: 26px 0 54px;
 }
@@ -287,7 +336,7 @@ h1{
 .kicker{
   display:inline-block;
   color: var(--muted);
-  font-weight: 800;
+  font-weight: 900;
   font-size: 12px;
   letter-spacing: .3px;
   text-transform: uppercase;
@@ -309,7 +358,7 @@ hr.sep{
   margin: 28px 0;
 }
 
-/* Infographic display */
+/* Infographic */
 .infographic{
   border: 1px solid var(--border);
   border-radius: var(--radius2);
@@ -323,26 +372,6 @@ hr.sep{
   height:auto;
 }
 
-/* Video */
-.video-wrap{
-  border: 1px solid var(--border);
-  border-radius: var(--radius2);
-  overflow:hidden;
-  box-shadow: var(--shadow);
-  background:#000;
-  aspect-ratio: 16 / 9;
-
-}
-
-.video-wrap video{
-  width: 100%;
-  height: auto;
-  display: block;
-  max-height: 72vh;     /* keeps it inside the screen */
-  object-fit: contain;  /* prevents cropping */
-  
-}
-
 .disclaimer{
   color: var(--muted);
   font-weight: 650;
@@ -352,10 +381,37 @@ hr.sep{
   border-radius: 14px;
 }
 
-/* Forms */
-form{
-  margin-top: 10px;
+/* =========================
+   VIDEO (LEARNING PAGE FIX)
+   ========================= */
+
+/* Supports BOTH: .video-wrapper (your HTML) and .video-wrap (older) */
+.video-wrapper,
+.video-wrap{
+  width: 100%;
+  max-width: 920px;
+  margin: 18px auto 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow2);
+  background:#000;
 }
+
+/* Video element sizing */
+.video-wrapper video,
+.video-wrap video{
+  width: 100%;
+  height: auto;
+  display:block;
+  max-height: 70vh;     /* stops “giant video” on phones */
+  object-fit: contain;  /* no cropping */
+}
+
+/* =========================
+   FORMS
+   ========================= */
+form{ margin-top: 10px; }
 
 label{
   display:block;
@@ -379,6 +435,9 @@ input:focus, textarea:focus{
 
 textarea{ min-height: 140px; resize: vertical; }
 
+/* =========================
+   FOOTER
+   ========================= */
 footer{
   border-top: 1px solid var(--border);
   padding: 26px 0 46px;
@@ -386,7 +445,9 @@ footer{
   font-weight: 650;
 }
 
-/* Responsive */
+/* =========================
+   RESPONSIVE LAYOUT
+   ========================= */
 @media (max-width: 960px){
   .hero-grid{ grid-template-columns: 1fr; }
   .grid-3{ grid-template-columns: 1fr; }
@@ -394,49 +455,9 @@ footer{
   .slides{ min-height: 260px; }
 }
 
-@media (max-width: 520px){
-  nav{ gap: 8px; }
-  nav a{ padding: 7px 8px; font-size: 14px; }
-}
-/* ===== WorldLeaders Logo in Navbar (ADD AT BOTTOM) ===== */
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  font-weight:800;
-  letter-spacing:.2px;
-}
-
-/* Hide the old dot when logo is used */
-.brand .dot{ display:none; }
-
-/* Logo image */
-.brand-logo{
-  height:44px;
-  width:auto;
-  display:block;
-}
-
-/* Optional: keep a clean wordmark text beside logo */
-.brand-text{
-  font-weight:800;
-  letter-spacing:.06em;
-  text-transform:uppercase;
-  font-size:14px;
-  color:var(--text);
-}
-
-@media (max-width: 768px){
-  .brand-logo{ height:36px; }
-  .brand-text{ font-size:12px; }
-}
-
-@media (max-width: 480px){
-  /* Hide text on very small screens to prevent navbar wrapping */
-  .brand-text{ display:none; }
-}
-/* ===== WorldLeaders Chatbot ===== */
+/* =========================
+   CHATBOT (UNCHANGED)
+   ========================= */
 .wl-chatbot{ position:fixed; right:20px; bottom:20px; z-index:9999; font-family:inherit; }
 .wl-chatbot__fab{
   border:0; cursor:pointer;
@@ -444,7 +465,7 @@ footer{
   border-radius:999px;
   background:#0f172a;
   color:#fff;
-  font-weight:700;
+  font-weight:800;
   box-shadow:0 10px 30px rgba(0,0,0,.15);
 }
 
@@ -471,7 +492,7 @@ footer{
   border-bottom:1px solid rgba(15,23,42,.08);
 }
 
-.wl-chatbot__title{ font-weight:800; color:#0f172a; }
+.wl-chatbot__title{ font-weight:900; color:#0f172a; }
 .wl-chatbot__close{ border:0; background:transparent; cursor:pointer; font-size:22px; line-height:1; padding:0 6px; color:#0f172a; }
 
 .wl-chatbot__messages{
@@ -533,118 +554,7 @@ footer{
   border:0; cursor:pointer;
   border-radius:12px;
   padding:10px 12px;
-  font-weight:700;
+  font-weight:800;
   background:#0f172a;
   color:#fff;
-}
-/* ----------------------------
-   MOBILE HEADER + NAV FIX
-   ---------------------------- */
-
-/* Make header layout stable */
-header .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-}
-
-/* Brand: logo + text */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  min-width: 0; /* prevents overflow */
-  text-decoration: none;
-}
-
-/* Logo sizing (prevents “huge logo” on mobile) */
-.brand img.brand-logo {
-  height: 28px;
-  width: auto;
-  display: block;
-}
-
-/* Brand text (optional) */
-.brand .brand-text {
-  font-weight: 800;
-  letter-spacing: 0.5px;
-  white-space: nowrap;
-}
-
-/* Nav layout (desktop default still fine) */
-header nav {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  flex-wrap: wrap;
-}
-
-/* Mobile: put nav on its own line, centered, clean wrap */
-@media (max-width: 820px) {
-  header .navbar {
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 12px;
-    padding-bottom: 12px;
-  }
-
-  .brand {
-    width: 100%;
-    justify-content: center;
-  }
-
-  header nav {
-    width: 100%;
-    justify-content: center;
-    gap: 14px 18px; /* row-gap col-gap */
-    padding-top: 8px;
-  }
-
-  header nav a {
-    padding: 8px 10px;
-    border-radius: 10px;
-  }
-}
-
-/* ----------------------------
-   RESPONSIVE VIDEO FIX
-   ---------------------------- */
-.video-wrap {
-  width: 100%;
-  max-width: 920px;
-  margin: 18px auto 0;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-/* Works for iframe OR video tag */
-.video-wrap iframe,
-.video-wrap video {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Responsive video wrapper (works for <video>) */
-.video-wrapper{
-  width: 100%;
-  max-width: 920px;     /* keeps it nice on desktop */
-  margin: 18px auto 0;
-  border-radius: 16px;
-  overflow: hidden;
-}
-
-.video-wrapper video{
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* Optional: prevent it feeling “too tall” on phones */
-@media (max-width: 820px){
-  .video-wrapper{
-    max-width: 100%;
-    border-radius: 14px;
-  }
 }
