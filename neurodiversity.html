@@ -2,93 +2,85 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <title>Neurodiversity | WorldLeaders</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Neurodiversity — WorldLeaders</title>
-  <meta name="description" content="Supportive guidance for ADHD, autism, anxiety, sensory needs, and working with occupational therapy and professionals." />
+  <meta name="description" content="Strengths-based, respectful strategies for attention, sensory needs, anxiety, and communication." />
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
-  <div class="nav">
-    <div class="container inner">
-      <a class="brand" href="index.html">
-        <span class="logo" aria-hidden="true"></span>
-        <span>WorldLeaders</span>
-      </a>
-      <div class="menu" role="navigation" aria-label="Primary">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="approach.html">Our Approach</a>
-        <a href="parents.html">Parent Guides</a>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html"><span class="dot"></span><span>WorldLeaders</span></a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a href="learning.html">Learning</a>
         <a class="active" href="neurodiversity.html">Neurodiversity</a>
+        <a href="parents.html">For Parents</a>
         <a href="resources.html">Resources</a>
         <a href="contact.html">Contact</a>
-      </div>
+      </nav>
     </div>
-  </div>
+  </header>
 
-  <div class="container section">
-    <div class="card">
-      <div class="kicker">Neurodiversity</div>
-      <h1>Support without stigma</h1>
-      <p class="lead">
-        Every child’s brain is different. We share practical strategies that support attention,
-        sensory needs, anxiety, and social communication — in respectful, strengths-based ways.
+  <main class="section">
+    <div class="container">
+      <h1 style="font-size:42px;margin-top:0;">Support without stigma</h1>
+      <p class="section-sub">
+        Every child’s brain is different. We share practical strategies that support attention, sensory needs, anxiety, and social communication—in respectful, strengths-based ways.
       </p>
 
-      <p class="note">
-        This content is educational. It is not medical advice and does not replace professional assessment or therapy.
-        If you have safety concerns or urgent needs, contact local services immediately.
-      </p>
+      <div class="disclaimer">
+        Educational content only. Not medical advice. For diagnosis/treatment, consult qualified professionals.
+      </div>
 
-      <hr />
+      <hr class="sep" />
 
-      <div class="grid3">
-        <div class="card" style="background:rgba(255,255,255,.02)">
+      <div class="grid-3">
+        <div class="card">
           <h3>ADHD support (home & school)</h3>
-          <p class="small">
-            Use short instructions, visual reminders, predictable routines, and movement breaks.
+          <p>Short instructions, visual reminders, predictable routines, and movement breaks.</p>
+          <p style="margin-top:10px;color:var(--muted);font-weight:700;">
+            Try: 1-step directions, timers, “first–then” language, reward charts for effort.
           </p>
-          <p class="small"><strong>Try:</strong> 1-step directions, timers, “first-then” language, reward charts for effort.</p>
         </div>
 
-        <div class="card" style="background:rgba(255,255,255,.02)">
+        <div class="card">
           <h3>Anxiety & overwhelm</h3>
-          <p class="small">
-            Teach calming skills before stressful moments. Reduce uncertainty with previewing and choices.
+          <p>Teach calming skills before stressful moments. Reduce uncertainty with previewing and choices.</p>
+          <p style="margin-top:10px;color:var(--muted);font-weight:700;">
+            Try: breathing, body scan, “what happens next” plan, safe coping corner.
           </p>
-          <p class="small"><strong>Try:</strong> breathing, body scan, “what happens next” plan, safe coping corner.</p>
         </div>
 
-        <div class="card" style="background:rgba(255,255,255,.02)">
+        <div class="card">
           <h3>Sensory needs</h3>
-          <p class="small">
-            Some children need sensory input to feel regulated and focused.
+          <p>Some children need sensory input to feel regulated and focused.</p>
+          <p style="margin-top:10px;color:var(--muted);font-weight:700;">
+            Try: heavy-work play, fidgets, quiet headphones, sensory breaks.
           </p>
-          <p class="small"><strong>Try:</strong> heavy-work play, fidgets, quiet headphones, sensory breaks.</p>
         </div>
       </div>
 
-      <hr />
+      <hr class="sep" />
 
-      <h2>Working with professionals (OT / SLP / therapy)</h2>
-      <div class="card" style="background:rgba(255,255,255,.02)">
-        <p class="small"><strong>Occupational Therapy (OT):</strong> sensory regulation, fine motor skills, daily living routines.</p>
-        <p class="small"><strong>Speech-Language Pathology (SLP):</strong> communication, social language, articulation.</p>
-        <p class="small"><strong>Behavioral supports:</strong> understanding triggers, building skills, reinforcing progress.</p>
-        <p class="small"><strong>Tip:</strong> Ask for “home strategies” and practice them consistently for 2–4 weeks.</p>
-      </div>
-
-      <div class="cta-row">
-        <a class="btn primary" href="contact.html">Ask a question</a>
-        <a class="btn" href="resources.html">See tools & printables</a>
+      <div class="card">
+        <h2 class="section-title" style="margin-top:0;">Featured learning</h2>
+        <p class="section-sub" style="margin-bottom:0;">
+          Watch our ADHD video in the Learning section.
+        </p>
+        <div class="cta-row" style="margin-top:12px;">
+          <a class="btn primary" href="learning.html">Go to Learning</a>
+          <a class="btn" href="contact.html">Ask a question</a>
+        </div>
       </div>
     </div>
+  </main>
 
-    <div class="footer">
-      <hr />
-      <p class="small">© <span id="y"></span> WorldLeaders.ca</p>
-    </div>
-  </div>
+  <footer>
+    <div class="container">© <span id="y"></span> WorldLeaders.</div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
