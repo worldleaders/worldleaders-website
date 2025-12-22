@@ -1,142 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>WorldLeaders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="WorldLeaders – Raising confident, morally aware children through play, connection, and purpose.">
-
-  <link rel="stylesheet" href="styles.css">
-
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      color: #1f2937;
-      line-height: 1.6;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 40px;
-      border-bottom: 1px solid #eee;
-    }
-
-    nav a {
-      margin-left: 20px;
-      text-decoration: none;
-      color: #374151;
-      font-weight: 500;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      padding: 60px 40px;
-      align-items: center;
-    }
-
-    .hero h1 {
-      font-size: 3rem;
-      margin-bottom: 16px;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      max-width: 500px;
-    }
-
-    .buttons {
-      margin-top: 24px;
-    }
-
-    .buttons a {
-      display: inline-block;
-      margin-right: 12px;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 500;
-    }
-
-    .primary {
-      background: #111827;
-      color: white;
-    }
-
-    .secondary {
-      border: 1px solid #d1d5db;
-      color: #111827;
-    }
-
-    .hero img {
-      width: 100%;
-      border-radius: 16px;
-      object-fit: cover;
-    }
-
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-      color: #6b7280;
-    }
-
-    @media (max-width: 900px) {
-      .hero {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="WorldLeaders – raising confident, morally aware children through play, connection, and purpose." />
+  <link rel="stylesheet" href="styles.css" />
 </head>
 
 <body>
+  <header>
+    <div class="container navbar">
+      <a class="brand" href="index.html">
+        <span class="dot"></span>
+        <span>WorldLeaders</span>
+      </a>
 
-<header>
-  <strong>WorldLeaders</strong>
-  <nav>
-    <a href="about.html">Philosophy</a>
-    <a href="approach.html">Approach</a>
-    <a href="learning.html">Learning</a>
-    <a href="neurodiversity.html">Neurodiversity</a>
-    <a href="parents.html">For Parents</a>
-    <a href="resources.html">Resources</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <div>
-    <h1>Raising confident, morally aware children.</h1>
-    <p>
-      WorldLeaders is a values-driven initiative supporting children’s
-      emotional, social, and cognitive growth through play, connection,
-      and purpose.
-    </p>
-
-    <div class="buttons">
-      <a href="about.html" class="primary">Explore our philosophy</a>
-      <a href="contact.html" class="secondary">Contact us</a>
+      <nav>
+        <a href="approach.html">Philosophy</a>
+        <a href="approach.html#approach">Approach</a>
+        <a href="learning.html">Learning</a>
+        <a href="neurodiversity.html">Neurodiversity</a>
+        <a href="parents.html">For Parents</a>
+        <a href="resources.html">Resources</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <p style="margin-top: 20px; font-style: italic;">
-      Website currently under development.
-    </p>
-  </div>
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="h-eyebrow">Values-driven. Play-based. Whole-child.</div>
+          <h1>Raising confident, morally aware children.</h1>
+          <p class="lead">
+            WorldLeaders supports children’s emotional, social, and cognitive growth through play, discovery, guided practice,
+            and meaningful relationships—so families and educators can help kids thrive.
+          </p>
 
-  <img src="assets/images/Hero-play.png" alt="Children playing joyfully outdoors">
-</section>
+          <div class="cta-row">
+            <a class="btn primary" href="approach.html">Explore our philosophy</a>
+            <a class="btn" href="contact.html">Contact us</a>
+          </div>
 
-<footer>
-  © WorldLeaders • Building brighter futures through understanding
-</footer>
+          <div class="note">Website currently under development.</div>
+        </div>
 
+        <div class="hero-media" aria-label="Hero slideshow">
+          <div class="slides">
+            <img src="assets/images/Hero-play.png" alt="Kids playing" />
+            <img src="assets/images/Hero-community.png" alt="Community and belonging" />
+            <img src="assets/images/Hero-Joy.png" alt="Joyful play" />
+            <img src="assets/images/Hero-nature.png" alt="Nature exploration" />
+          </div>
+          <div class="hover-hint">Hover to pause</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">What we focus on</h2>
+        <p class="section-sub">
+          Practical, compassionate guidance for the moments that matter—at home, in classrooms, and in community spaces.
+        </p>
+
+        <div class="grid-3">
+          <div class="card">
+            <h3>Social–emotional skills</h3>
+            <p>Feelings language, empathy, friendship skills, problem-solving, and calm-down tools.</p>
+          </div>
+          <div class="card">
+            <h3>Learning through play</h3>
+            <p>Curiosity, exploration, hands-on projects, and scaffolding—without pressure or shame.</p>
+          </div>
+          <div class="card">
+            <h3>Support without stigma</h3>
+            <p>Neurodiversity-informed strategies and pathways to professional supports when needed.</p>
+          </div>
+        </div>
+
+        <hr class="sep" />
+
+        <div class="media-card card">
+          <div>
+            <span class="kicker">Classroom</span>
+            <h3>Guided play & exploration</h3>
+            <p class="section-sub" style="margin-bottom:0">
+              Balanced environments that encourage independence, collaboration, and positive modeling—so children build confidence and skills that last.
+            </p>
+            <ul class="list">
+              <li>Clear routines + flexible choices</li>
+              <li>Model kindness and respectful boundaries</li>
+              <li>Small steps, big encouragement</li>
+            </ul>
+          </div>
+          <div class="media">
+            <img src="assets/images/classroom-play.png" alt="Classroom play and building" />
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> WorldLeaders. Built with care for families, children, and educators.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
