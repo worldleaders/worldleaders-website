@@ -1,17 +1,15 @@
 // functions/api/chat.js
 // WorldLeaders: RAG chat endpoint + simple per-IP rate limiting using Cloudflare Cache API.
-// Limit: 3 requests per 24 hours per IP (rolling window)
+// v2: conversation memory (history) + higher token limit + follow-up aware prompt.
 
 export async function onRequest(context) {
   const { request, env } = context;
 
-  // CORS preflight
   if (request.method === "OPTIONS") return corsPreflight();
 
-  // Friendly GET response
   if (request.method === "GET") {
     return new Response(
-      'WorldLeaders Chat API. Send POST JSON: {"message":"..."}',
+      'WorldLeaders Chat API. Send POST JSON: {"message":"...","history":[...]}',
       { headers: corsHeaders({ "content-type": "text/plain; charset=utf-8" }) }
     );
   }
@@ -21,18 +19,18 @@ export async function onRequest(context) {
   }
 
   try {
-    // ---- Guardrails: env vars
     if (!env.OPENAI_API_KEY) return json({ error: "Missing OPENAI_API_KEY" }, 500);
     if (!env.OPENAI_VECTOR_STORE_ID) return json({ error: "Missing OPENAI_VECTOR_STORE_ID" }, 500);
 
-    // ---- Rate limit (server-side)
+    // ---- Rate limit (server-side safety net; the UI enforces the friendlier 5/day cap)
     const ip =
       request.headers.get("CF-Connecting-IP") ||
       request.headers.get("x-forwarded-for") ||
       "unknown";
 
-    const limit = 6;
-    const windowSeconds = 24 * 60 * 60; // 24h rolling window
+    // NOTE: keep this >= the UI limit (AI_LOCAL_LIMIT in chatbot.js). This is per-IP anti-abuse.
+    const limit = 8;
+    const windowSeconds = 24 * 60 * 60;
 
     const rl = await rateLimitCheck({ ip, limit, windowSeconds });
     if (!rl.allowed) {
@@ -46,28 +44,40 @@ export async function onRequest(context) {
           reset_in_seconds: rl.resetInSeconds,
         },
         429,
-        {
-          "retry-after": String(rl.resetInSeconds),
-        }
+        { "retry-after": String(rl.resetInSeconds) }
       );
     }
 
-    // ---- Read user input
+    // ---- Read user input + optional conversation history
     const body = await request.json().catch(() => ({}));
     const message = (body?.message || "").toString().trim();
-    if (!message) return json({ error: "Missing 'message' string" }, 400);
+    const rawHistory = Array.isArray(body?.history) ? body.history : [];
 
-    // ---- OpenAI call (Responses API + file_search RAG)
+    if (!message && rawHistory.length === 0) return json({ error: "Missing 'message' string" }, 400);
+
+    // Sanitize history: only user/assistant string turns, cap count + length to control tokens.
+    const history = rawHistory
+      .filter((m) => m && (m.role === "user" || m.role === "assistant") && typeof m.content === "string")
+      .slice(-6)
+      .map((m) => ({ role: m.role, content: m.content.slice(0, 1200) }));
+
     const model = env.OPENAI_MODEL || "gpt-4.1-mini";
 
     const system = [
       "You are the WorldLeaders Assistant for parents and educators.",
-      "Be calm, supportive, and practical. Use short paragraphs and bullets.",
-      "Answer ONLY using WorldLeaders documents returned via file_search.",
-      "If the answer is not in the documents, say you don't know and suggest Resources/Contact.",
-      "Keep the answer short (max ~160 words).",
-      "Educational content only. Not medical advice. Do not diagnose.",
+      "ANSWER PRIMARILY FROM THE WORLDLEADERS DOCUMENTS returned by file_search. Paraphrase our own guidance whenever it applies, and prefer it over general knowledge.",
+      "If the documents cover the question: base the answer on them and keep it concise (about 100–150 words), with short paragraphs and simple bullets.",
+      "If the documents do NOT cover it: do NOT write a long general essay. Give one or two brief, sensible pointers in the calm WorldLeaders style (2–4 short lines), then point to the most relevant page (Resources or Contact). Our library is still growing, so it's fine to say a fuller answer is on the way.",
+      "This is a CONVERSATION: use previous turns for context. For follow-ups like 'what if that doesn't work' or 'same as before', do NOT repeat your last answer — offer new, different, more specific strategies, and ask one gentle clarifying question if useful.",
+      "Calm, supportive, practical. Educational content only. Not medical advice. Do not diagnose.",
     ].join("\n");
+
+    // Build the model input from the conversation.
+    const input = [{ role: "system", content: system }, ...history];
+    const last = input[input.length - 1];
+    if ((!last || last.role !== "user") && message) {
+      input.push({ role: "user", content: message });
+    }
 
     const openaiRes = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
@@ -77,11 +87,8 @@ export async function onRequest(context) {
       },
       body: JSON.stringify({
         model,
-        max_output_tokens: 220,
-        input: [
-          { role: "system", content: system },
-          { role: "user", content: message },
-        ],
+        max_output_tokens: 450, // enough for a concise grounded answer; avoids the old 220 cutoff
+        input,
         tools: [
           {
             type: "file_search",
@@ -95,12 +102,7 @@ export async function onRequest(context) {
     const data = await openaiRes.json().catch(() => ({}));
 
     if (!openaiRes.ok) {
-      return json(
-        {
-          error: data?.error?.message || `OpenAI error (${openaiRes.status})`,
-        },
-        500
-      );
+      return json({ error: data?.error?.message || `OpenAI error (${openaiRes.status})` }, 500);
     }
 
     const answer = extractAnswerText(data) || "Sorry — I couldn’t generate a response.";
@@ -123,33 +125,18 @@ export async function onRequest(context) {
 /* ---------------- Rate limiting using Cache API ---------------- */
 
 async function rateLimitCheck({ ip, limit, windowSeconds }) {
-  // Use a deterministic cache key
   const keyUrl = `https://worldleaders.local/ratelimit?ip=${encodeURIComponent(ip)}`;
   const cacheKey = new Request(keyUrl);
   const cache = caches.default;
-
   const now = Math.floor(Date.now() / 1000);
 
   const cached = await cache.match(cacheKey);
   if (!cached) {
-    // First request in window
     const record = { count: 1, start: now, windowSeconds };
-    await cache.put(
-      cacheKey,
-      new Response(JSON.stringify(record), {
-        headers: {
-          "content-type": "application/json",
-          "cache-control": `public, max-age=${windowSeconds}`,
-        },
-      })
-    );
-
-    return {
-      allowed: true,
-      limit,
-      remaining: limit - 1,
-      resetInSeconds: windowSeconds,
-    };
+    await cache.put(cacheKey, new Response(JSON.stringify(record), {
+      headers: { "content-type": "application/json", "cache-control": `public, max-age=${windowSeconds}` },
+    }));
+    return { allowed: true, limit, remaining: limit - 1, resetInSeconds: windowSeconds };
   }
 
   const record = await cached.json().catch(() => ({ count: 0, start: now, windowSeconds }));
@@ -157,70 +144,35 @@ async function rateLimitCheck({ ip, limit, windowSeconds }) {
   const count = Number(record.count || 0);
   const elapsed = now - start;
 
-  // If for any reason window elapsed exceeds cache max-age, treat as reset
   if (elapsed >= windowSeconds) {
     const newRecord = { count: 1, start: now, windowSeconds };
-    await cache.put(
-      cacheKey,
-      new Response(JSON.stringify(newRecord), {
-        headers: {
-          "content-type": "application/json",
-          "cache-control": `public, max-age=${windowSeconds}`,
-        },
-      })
-    );
-
-    return {
-      allowed: true,
-      limit,
-      remaining: limit - 1,
-      resetInSeconds: windowSeconds,
-    };
+    await cache.put(cacheKey, new Response(JSON.stringify(newRecord), {
+      headers: { "content-type": "application/json", "cache-control": `public, max-age=${windowSeconds}` },
+    }));
+    return { allowed: true, limit, remaining: limit - 1, resetInSeconds: windowSeconds };
   }
 
-  // Still within the rolling window
   if (count >= limit) {
-    return {
-      allowed: false,
-      limit,
-      remaining: 0,
-      resetInSeconds: Math.max(1, windowSeconds - elapsed),
-    };
+    return { allowed: false, limit, remaining: 0, resetInSeconds: Math.max(1, windowSeconds - elapsed) };
   }
 
   const newCount = count + 1;
   const remaining = limit - newCount;
   const resetInSeconds = Math.max(1, windowSeconds - elapsed);
-
   const newRecord = { count: newCount, start, windowSeconds };
-  await cache.put(
-    cacheKey,
-    new Response(JSON.stringify(newRecord), {
-      headers: {
-        "content-type": "application/json",
-        // Keep original window; do NOT extend on each request
-        "cache-control": `public, max-age=${resetInSeconds}`,
-      },
-    })
-  );
+  await cache.put(cacheKey, new Response(JSON.stringify(newRecord), {
+    headers: { "content-type": "application/json", "cache-control": `public, max-age=${resetInSeconds}` },
+  }));
 
-  return {
-    allowed: true,
-    limit,
-    remaining,
-    resetInSeconds,
-  };
+  return { allowed: true, limit, remaining, resetInSeconds };
 }
 
 /* ---------------- Helpers ---------------- */
 
 function extractAnswerText(data) {
-  // Preferred shortcut if present
   if (typeof data?.output_text === "string" && data.output_text.trim()) return data.output_text.trim();
-
   const out = data?.output;
   if (!Array.isArray(out)) return "";
-
   let text = "";
   for (const item of out) {
     const content = item?.content;
@@ -241,11 +193,7 @@ function corsHeaders(extra = {}) {
     ...extra,
   };
 }
-
-function corsPreflight() {
-  return new Response(null, { headers: corsHeaders() });
-}
-
+function corsPreflight() { return new Response(null, { headers: corsHeaders() }); }
 function json(obj, status = 200, extraHeaders = {}) {
   return new Response(JSON.stringify(obj), {
     status,
