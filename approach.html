@@ -1,153 +1,83 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Approach | WorldLeaders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Our practical approach: connection, structure, skills, and encouragement." />
-  <link rel="stylesheet" href="styles.css" />
-
-  <style>
-    .steps{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 18px;
-    }
-    .step{
-      border: 1px solid var(--border);
-      border-radius: var(--radius2);
-      padding: 18px;
-      background: #fff;
-      box-shadow: var(--shadow2);
-    }
-    .num{
-      display:inline-flex;
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
-      align-items:center;
-      justify-content:center;
-      font-weight: 900;
-      background: rgba(15,23,42,.08);
-      color: var(--text);
-      margin-bottom: 10px;
-    }
-    .step h3{ margin: 0 0 6px; font-size: 18px; }
-    .step p{ margin: 0; color: var(--muted); font-weight: 600; }
-    .mini{
-      margin-top: 10px;
-      color: var(--text);
-      font-weight: 800;
-      font-size: 13px;
-    }
-    @media (max-width: 960px){
-      .steps{ grid-template-columns: 1fr; }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Approach | WorldLeaders</title>
+<meta name="description" content="Our practical approach: connection, structure, skills, and encouragement.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260726-1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FCF4EE">
 </head>
-
 <body>
-<header>
-  <div class="container navbar">
-    <a class="brand" href="index.html" aria-label="World Leaders home">
-    <img src="assets/logo.png" alt="World Leaders" class="brand-logo" />
-    <span class="brand-text">WorldLeaders</span>
-    </a>
-
-    <nav>
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="WorldLeaders home"><svg class="brand-mark" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><rect x="7" y="55.5" width="50" height="4" rx="2" fill="#2A1E42" opacity=".10"/><rect x="7.5" y="30" width="7" height="26" rx="3.5" fill="#9DBEF5"/><circle cx="11" cy="27.5" r="4.4" fill="#9DBEF5"/><rect x="18" y="24" width="7" height="32" rx="3.5" fill="#48C0A6"/><circle cx="21.5" cy="21.5" r="4.4" fill="#48C0A6"/><rect x="28.5" y="18" width="7" height="38" rx="3.5" fill="#FDB05A"/><circle cx="32" cy="15.5" r="4.4" fill="#FDB05A"/><rect x="39" y="24" width="7" height="32" rx="3.5" fill="#FF8E72"/><circle cx="42.5" cy="21.5" r="4.4" fill="#FF8E72"/><rect x="49.5" y="30" width="7" height="26" rx="3.5" fill="#B79CF0"/><circle cx="53" cy="27.5" r="4.4" fill="#B79CF0"/></svg><span>World<b>Leaders</b></span></a>
+    <nav class="nav-links" aria-label="Primary">
       <a href="philosophy.html">Philosophy</a>
       <a class="active" href="approach.html">Approach</a>
       <a href="learning.html">Learning</a>
       <a href="neurodiversity.html">Neurodiversity</a>
       <a href="parents.html">For Parents</a>
       <a href="resources.html">Resources</a>
-      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary nav-cta" href="contact.html">Contact us</a>
     </nav>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
   </div>
 </header>
-
-<main class="section">
-  <div class="container">
-
-    <h1 style="font-size:42px;margin-top:0;">Our Approach</h1>
-    <p class="section-sub">
-      Clear, calm steps you can use at home or in the classroom.
-      We focus on teaching skills — not blaming children.
-    </p>
-
-    <div class="steps">
-      <div class="step">
-        <div class="num">1</div>
-        <h3>Observe first</h3>
-        <p>Behavior is communication. Look for needs, stress, or missing skills.</p>
-        <div class="mini">Try: “What is this moment telling me?”</div>
-      </div>
-
-      <div class="step">
-        <div class="num">2</div>
-        <h3>Adjust the environment</h3>
-        <p>Small changes reduce friction and increase success.</p>
-        <div class="mini">Try: visuals, quieter space, movement breaks</div>
-      </div>
-
-      <div class="step">
-        <div class="num">3</div>
-        <h3>Teach the skill</h3>
-        <p>Children need practice: waiting, transitions, asking for help.</p>
-        <div class="mini">Try: practice during calm moments</div>
-      </div>
-
-      <div class="step">
-        <div class="num">4</div>
-        <h3>Use calm boundaries</h3>
-        <p>Limits create safety when they’re steady and respectful.</p>
-        <div class="mini">Try: short words, consistent actions</div>
-      </div>
-
-      <div class="step">
-        <div class="num">5</div>
-        <h3>Encourage progress</h3>
-        <p>Notice effort and strategies — not perfection.</p>
-        <div class="mini">Try: “You kept trying. That was hard.”</div>
-      </div>
-
-      <div class="step">
-        <div class="num">6</div>
-        <h3>Partner with families</h3>
-        <p>Children thrive when home and school are aligned.</p>
-        <div class="mini">Try: one shared routine across settings</div>
-      </div>
-    </div>
-
-    <hr class="sep" />
-
-    <div class="card">
-      <h2 class="section-title" style="margin-top:0;">Start here</h2>
-      <p class="section-sub" style="margin-bottom:0;">
-        Visit Learning for videos and short guides. Then use Parent Guidance for routines and scripts.
-      </p>
-      <div class="cta-row" style="margin-top:12px;">
-        <a class="btn primary" href="learning.html">Go to Learning</a>
-        <a class="btn" href="parents.html">Go to Parent Guidance</a>
-      </div>
-    </div>
-
-    <div class="disclaimer" style="margin-top:18px;">
-      Educational content only. Not medical advice. For diagnosis or therapy, consult qualified professionals.
-    </div>
-
+<main>
+<section class="page-hero">
+  <div class="blob b-marigold b1"></div>
+  <div class="wrap page-hero-inner">
+    <span class="eyebrow">Our approach</span>
+    <h1>Clear, calm steps that teach skills.</h1>
+    <p class="lead">Steps you can use at home or in the classroom &mdash; focused on teaching skills, not blaming children.</p>
+    
   </div>
+</section>
+<section class="section" style="padding-top:20px">
+  <div class="wrap">
+    <div class="cards">
+      <div class="card reveal"><div class="num-chip chip-marigold">1</div><h3>Observe first</h3><p>Behavior is communication. Look for needs, stress, or missing skills.</p><p class="try-line"><b>Try:</b> &ldquo;What is this moment telling me?&rdquo;</p></div>
+      <div class="card reveal"><div class="num-chip chip-meadow">2</div><h3>Adjust the environment</h3><p>Small changes reduce friction and increase success.</p><p class="try-line"><b>Try:</b> visuals, quieter space, movement breaks</p></div>
+      <div class="card reveal"><div class="num-chip chip-sky">3</div><h3>Teach the skill</h3><p>Children need practice: waiting, transitions, asking for help.</p><p class="try-line"><b>Try:</b> practice during calm moments</p></div>
+      <div class="card reveal"><div class="num-chip chip-marigold">4</div><h3>Use calm boundaries</h3><p>Limits create safety when they&rsquo;re steady and respectful.</p><p class="try-line"><b>Try:</b> short words, consistent actions</p></div>
+      <div class="card reveal"><div class="num-chip chip-meadow">5</div><h3>Encourage progress</h3><p>Notice effort and strategies &mdash; not perfection.</p><p class="try-line"><b>Try:</b> &ldquo;You kept trying. That was hard.&rdquo;</p></div>
+      <div class="card reveal"><div class="num-chip chip-sky">6</div><h3>Partner with families</h3><p>Children thrive when home and school are aligned.</p><p class="try-line"><b>Try:</b> one shared routine across settings</p></div>
+    </div>
+    <div class="cta reveal" style="margin-top:56px"><div class="blob cb1"></div><div class="cta-inner">
+      <h2>Start here</h2>
+      <p>Visit Learning for videos and short guides. Then use Parent Guidance for routines and scripts.</p>
+      <div class="cta-actions"><a class="btn btn-light" href="learning.html">Go to Learning <span class="arrow">&rarr;</span></a><a class="btn btn-ghost" href="parents.html" style="border-color:rgba(42,30,66,.35)">Parent Guidance</a></div>
+    </div></div>
+    <p class="disclaimer-light">Educational content only. Not medical advice. For diagnosis or therapy, consult qualified professionals.</p>
+  </div>
+</section>
 </main>
-
-<footer>
-  <div class="container">© <span id="y"></span> WorldLeaders</div>
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><rect x="7" y="55.5" width="50" height="4" rx="2" fill="#2A1E42" opacity=".10"/><rect x="7.5" y="30" width="7" height="26" rx="3.5" fill="#9DBEF5"/><circle cx="11" cy="27.5" r="4.4" fill="#9DBEF5"/><rect x="18" y="24" width="7" height="32" rx="3.5" fill="#48C0A6"/><circle cx="21.5" cy="21.5" r="4.4" fill="#48C0A6"/><rect x="28.5" y="18" width="7" height="38" rx="3.5" fill="#FDB05A"/><circle cx="32" cy="15.5" r="4.4" fill="#FDB05A"/><rect x="39" y="24" width="7" height="32" rx="3.5" fill="#FF8E72"/><circle cx="42.5" cy="21.5" r="4.4" fill="#FF8E72"/><rect x="49.5" y="30" width="7" height="26" rx="3.5" fill="#B79CF0"/><circle cx="53" cy="27.5" r="4.4" fill="#B79CF0"/></svg><span>World<b>Leaders</b></span></a>
+        <p>Raising confident, morally aware children through play, connection, and purpose. Built with care for families, children, and educators.</p>
+      </div>
+      <div class="foot-col"><h4>Explore</h4><a href="philosophy.html">Philosophy</a><a href="approach.html">Approach</a><a href="learning.html">Learning</a><a href="neurodiversity.html">Neurodiversity</a></div>
+      <div class="foot-col"><h4>Support</h4><a href="parents.html">For Parents</a><a href="resources.html">Resources</a><a href="contact.html">Contact</a></div>
+    </div>
+    <div class="foot-bottom">&copy; <span id="yr"></span> WorldLeaders &middot; Made with care in Canada &#127809;</div>
+  </div>
 </footer>
-
-<script>
-  document.getElementById("y").textContent = new Date().getFullYear();
-</script>
-<script src="assets/chatbot.js">
-</script>
+<script src="main.js?v=20260726-1" defer></script>
+<!-- WorldLeaders AI Chatbot -->
+<script src="assets/chatbot.js"></script>
 </body>
 </html>
