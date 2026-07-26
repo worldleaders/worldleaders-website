@@ -1,0 +1,55 @@
+name: Weekly Insight
+
+on:
+  schedule:
+    # Every Monday 12:30 UTC (~8:30am Toronto in summer)
+    - cron: "30 12 * * 1"
+  workflow_dispatch: {}   # run on-demand from the Actions tab
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install email libraries
+        run: npm install --no-save react@18 react-dom@18 @react-email/components@0.0.25 @react-email/render@1.0.1
+
+      - name: Generate this week's insight (+ illustration)
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: ${{ secrets.OPENAI_MODEL }}
+          IMAGE_MODEL: ${{ secrets.IMAGE_MODEL }}
+          GEN_IMAGE: ${{ secrets.GEN_IMAGE }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: node scripts/generate-insight.mjs
+
+      - name: Commit & push the new page + image
+        run: |
+          git config user.name "worldleaders-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add insights insights.html assets/insights
+          if git diff --staged --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "chore: weekly insight ($(date -u +%Y-%m-%d))"
+            git push
+          fi
+
+      - name: Send newsletter (Resend)
+        env:
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          NEWSLETTER_FROM: ${{ secrets.NEWSLETTER_FROM }}
+          NEWSLETTER_REPLY_TO: ${{ secrets.NEWSLETTER_REPLY_TO }}
+          NEWSLETTER_TO: ${{ secrets.NEWSLETTER_TO }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: node scripts/send-newsletter.mjs
