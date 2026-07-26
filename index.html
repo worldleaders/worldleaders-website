@@ -1,128 +1,266 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>WorldLeaders</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="WorldLeaders – raising confident, morally aware children through play, connection, and purpose." />
-
-  <!-- Prevent browsers from “auto dark-mode” inverting your colors -->
-  <meta name="color-scheme" content="light" />
-
-  <!-- Cache-buster so Brave/others don’t keep an older CSS file -->
-  <link rel="stylesheet" href="styles.css?v=20251222-1" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WorldLeaders — Confident, kind, capable kids</title>
+<meta name="description" content="WorldLeaders helps every child grow confident, capable, and understood — with warm, play-based, neurodiversity-informed support for families and educators.">
+<meta name="color-scheme" content="light">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Nunito:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20260726-1">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#FCF4EE">
 </head>
-
 <body>
-  <header>
-    <div class="container navbar">
-      <a class="brand" href="index.html" aria-label="WorldLeaders home">
-        <img src="assets/logo.png" alt="WorldLeaders" class="brand-logo" />
-        <span class="brand-text">WorldLeaders</span>
-      </a>
 
-      <nav aria-label="Primary navigation">
+<!-- ============ NAV ============ -->
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="index.html" aria-label="WorldLeaders home">
+      <svg class="brand-mark" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><rect x="7" y="55.5" width="50" height="4" rx="2" fill="#2A1E42" opacity=".10"/><rect x="7.5" y="30" width="7" height="26" rx="3.5" fill="#9DBEF5"/><circle cx="11" cy="27.5" r="4.4" fill="#9DBEF5"/><rect x="18" y="24" width="7" height="32" rx="3.5" fill="#48C0A6"/><circle cx="21.5" cy="21.5" r="4.4" fill="#48C0A6"/><rect x="28.5" y="18" width="7" height="38" rx="3.5" fill="#FDB05A"/><circle cx="32" cy="15.5" r="4.4" fill="#FDB05A"/><rect x="39" y="24" width="7" height="32" rx="3.5" fill="#FF8E72"/><circle cx="42.5" cy="21.5" r="4.4" fill="#FF8E72"/><rect x="49.5" y="30" width="7" height="26" rx="3.5" fill="#B79CF0"/><circle cx="53" cy="27.5" r="4.4" fill="#B79CF0"/></svg>
+      <span>World<b>Leaders</b></span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="philosophy.html">Philosophy</a>
+      <a href="approach.html">Approach</a>
+      <a href="learning.html">Learning</a>
+      <a href="neurodiversity.html">Neurodiversity</a>
+      <a href="parents.html">For Parents</a>
+      <a href="resources.html">Resources</a>
+      <a class="btn btn-primary nav-cta" href="contact.html">Contact us</a>
+    </nav>
+    <button class="menu-btn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="blob b-marigold b1"></div>
+  <div class="blob b-meadow b2"></div>
+  <div class="blob b-sky b3"></div>
+
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="eyebrow">Values-driven &middot; Play-based &middot; Whole-child</span>
+      <h1>Helping every child feel confident, capable, and&nbsp;<span class="u">understood</span>.</h1>
+      <p class="lede">Warm, practical support for children's emotional, social, and cognitive growth &mdash; so families and educators can help every kind of kid thrive.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="philosophy.html">Explore our philosophy <span class="arrow">&rarr;</span></a>
+        <a class="btn btn-ghost" href="neurodiversity.html">Neurodiversity support</a>
+      </div>
+      <div class="trust">
+        <div><span class="dot" style="background:var(--marigold)"></span><span><b>Play</b>-based learning</span></div>
+        <div><span class="dot" style="background:var(--meadow)"></span><span><b>Strengths</b>-first support</span></div>
+        <div><span class="dot" style="background:var(--sky)"></span><span><b>No</b> stigma, ever</span></div>
+      </div>
+    </div>
+
+    <div class="hero-media">
+      <div class="hm hm-main"><img src="assets/images/Hero-Joy.png" alt="A child playing joyfully"></div>
+      <div class="hm hm-sec"><img src="assets/images/Hero-community.png" alt="Children together, building community and belonging"></div>
+      <div class="hm-badge">
+        <div class="ring">&#127793;</div>
+        <div><b>Whole-child</b><small>growth that lasts</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOCUS ============ -->
+<section class="section" id="focus">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">What we focus on</span>
+      <h2>Compassionate guidance for the moments that matter.</h2>
+      <p>Practical, warm strategies for home, classrooms, and community spaces &mdash; the kind you can actually use today.</p>
+    </div>
+    <div class="cards">
+      <a class="card reveal" href="learning.html">
+        <span class="tag">01</span>
+        <div class="chip chip-marigold">&#128153;</div>
+        <h3>Social&ndash;emotional skills</h3>
+        <p>Feelings language, empathy, friendship skills, problem-solving, and calm-down tools children can carry for life.</p>
+      </a>
+      <a class="card reveal" href="approach.html">
+        <span class="tag">02</span>
+        <div class="chip chip-meadow">&#129513;</div>
+        <h3>Learning through play</h3>
+        <p>Curiosity, exploration, hands-on projects, and gentle scaffolding &mdash; growth without pressure or shame.</p>
+      </a>
+      <a class="card reveal" href="neurodiversity.html">
+        <span class="tag">03</span>
+        <div class="chip chip-sky">&#129309;</div>
+        <h3>Support without stigma</h3>
+        <p>Neurodiversity-informed strategies, and clear pathways to professional support when a family needs it.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NEURODIVERSITY FEATURE ============ -->
+<section class="section" style="padding-top:20px">
+  <div class="wrap feature">
+    <div class="feature-inner">
+      <div class="blob fb1"></div>
+      <div class="blob fb2"></div>
+      <div class="feature-grid">
+        <div class="reveal">
+          <span class="eyebrow">Our neurodiversity focus</span>
+          <h2>Every brain is different. Every child belongs.</h2>
+          <p class="lede">We share warm, strengths-based strategies for attention, sensory needs, big feelings, and social communication &mdash; respectful, practical, and free of stigma.</p>
+          <div class="hero-actions" style="margin-top:26px">
+            <a class="btn btn-primary" href="neurodiversity.html">See the strategies <span class="arrow">&rarr;</span></a>
+            <a class="btn btn-light" href="contact.html">Ask a question</a>
+          </div>
+          <p class="disclaimer">Educational content only &mdash; not medical advice. For diagnosis or treatment, please consult qualified professionals.</p>
+        </div>
+        <div class="feature-img reveal">
+          <img src="assets/images/Hero-nature.png" alt="A child exploring nature calmly and confidently">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PILLARS ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Our philosophy</span>
+      <h2>Five pillars that turn values into everyday practice.</h2>
+      <p>Designed for real life &mdash; at home, in the classroom, and out in the community.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar reveal">
+        <div class="num">01</div>
+        <div><h3>Whole-Child Growth</h3><p>Emotions, thinking, movement, and belonging develop together &mdash; never one without the others.</p></div>
+        <div class="swatch" style="background:var(--marigold)"></div>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">02</div>
+        <div><h3>Play = Learning</h3><p>Children build genuine confidence and skills through hands-on exploration.</p></div>
+        <div class="swatch" style="background:var(--meadow)"></div>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">03</div>
+        <div><h3>Connection &amp; Belonging</h3><p>Safe relationships are what make cooperation and learning possible.</p></div>
+        <div class="swatch" style="background:var(--sky)"></div>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">04</div>
+        <div><h3>Guided Independence</h3><p>Choice within clear boundaries helps children grow real self-control.</p></div>
+        <div class="swatch" style="background:var(--blossom)"></div>
+      </div>
+      <div class="pillar reveal">
+        <div class="num">05</div>
+        <div><h3>Service &amp; Responsibility</h3><p>Leadership begins with kindness, contribution, and care for others.</p></div>
+        <div class="swatch" style="background:var(--marigold-deep)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STRATEGIES ============ -->
+<section class="section section-tint">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <span class="eyebrow">Try this at home</span>
+      <h2>Small steps. Big encouragement.</h2>
+      <p>Gentle, respectful strategies you can start today &mdash; no special equipment, no pressure.</p>
+    </div>
+    <div class="try-cards">
+      <div class="try reveal">
+        <div class="ic chip-marigold">&#127919;</div>
+        <h3>Attention &amp; focus</h3>
+        <p>Short, clear instructions with predictable routines and movement breaks.</p>
+        <ul>
+          <li>One-step directions</li>
+          <li>Timers &amp; visual reminders</li>
+          <li>&ldquo;First&ndash;then&rdquo; language</li>
+          <li>Reward effort, not just results</li>
+        </ul>
+      </div>
+      <div class="try reveal">
+        <div class="ic chip-meadow">&#129746;</div>
+        <h3>Anxiety &amp; big feelings</h3>
+        <p>Teach calming skills before stressful moments, and reduce uncertainty ahead of time.</p>
+        <ul>
+          <li>Breathing &amp; body scans</li>
+          <li>A &ldquo;what happens next&rdquo; plan</li>
+          <li>A safe coping corner</li>
+          <li>Offer small, real choices</li>
+        </ul>
+      </div>
+      <div class="try reveal">
+        <div class="ic chip-sky">&#129530;</div>
+        <h3>Sensory needs</h3>
+        <p>Some children need sensory input to feel regulated, calm, and ready to focus.</p>
+        <ul>
+          <li>Heavy-work play</li>
+          <li>Fidgets &amp; quiet headphones</li>
+          <li>Planned sensory breaks</li>
+          <li>Watch for what soothes</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="cta reveal">
+      <div class="blob cb1"></div>
+      <div class="cta-inner">
+        <h2>Let's help your child thrive.</h2>
+        <p>Whether you're a parent or an educator, we're here with warm, practical support &mdash; and answers to your questions.</p>
+        <div class="cta-actions">
+          <a class="btn btn-light" href="contact.html">Contact us <span class="arrow">&rarr;</span></a>
+          <a class="btn btn-ghost" href="philosophy.html" style="border-color:rgba(42,30,66,.35)">Explore our philosophy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="index.html"><svg class="brand-mark" viewBox="0 0 64 64" width="44" height="44" aria-hidden="true"><rect x="7" y="55.5" width="50" height="4" rx="2" fill="#2A1E42" opacity=".10"/><rect x="7.5" y="30" width="7" height="26" rx="3.5" fill="#9DBEF5"/><circle cx="11" cy="27.5" r="4.4" fill="#9DBEF5"/><rect x="18" y="24" width="7" height="32" rx="3.5" fill="#48C0A6"/><circle cx="21.5" cy="21.5" r="4.4" fill="#48C0A6"/><rect x="28.5" y="18" width="7" height="38" rx="3.5" fill="#FDB05A"/><circle cx="32" cy="15.5" r="4.4" fill="#FDB05A"/><rect x="39" y="24" width="7" height="32" rx="3.5" fill="#FF8E72"/><circle cx="42.5" cy="21.5" r="4.4" fill="#FF8E72"/><rect x="49.5" y="30" width="7" height="26" rx="3.5" fill="#B79CF0"/><circle cx="53" cy="27.5" r="4.4" fill="#B79CF0"/></svg><span>World<b>Leaders</b></span></a>
+        <p>Raising confident, morally aware children through play, connection, and purpose. Built with care for families, children, and educators.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Explore</h4>
         <a href="philosophy.html">Philosophy</a>
         <a href="approach.html">Approach</a>
         <a href="learning.html">Learning</a>
         <a href="neurodiversity.html">Neurodiversity</a>
+      </div>
+      <div class="foot-col">
+        <h4>Support</h4>
         <a href="parents.html">For Parents</a>
         <a href="resources.html">Resources</a>
         <a href="contact.html">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="h-eyebrow">Values-driven. Play-based. Whole-child.</div>
-
-          <h1>Raising confident, morally aware children.</h1>
-
-          <p class="lead">
-            WorldLeaders supports children’s emotional, social, and cognitive growth through play, discovery, guided practice,
-            and meaningful relationships—so families and educators can help kids thrive.
-          </p>
-
-          <div class="cta-row">
-            <a class="btn primary" href="philosophy.html">Explore our philosophy</a>
-            <a class="btn" href="contact.html">Contact us</a>
-          </div>
-        </div>
-
-        <div class="hero-media" aria-label="Hero slideshow">
-          <div class="slides">
-            <img src="assets/images/Hero-play.png" alt="Kids playing" />
-            <img src="assets/images/Hero-community.png" alt="Community and belonging" />
-            <img src="assets/images/Hero-Joy.png" alt="Joyful play" />
-            <img src="assets/images/Hero-nature.png" alt="Nature exploration" />
-          </div>
-          <div class="hover-hint">Hover to pause</div>
-        </div>
       </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <h2 class="section-title">What we focus on</h2>
-        <p class="section-sub">
-          Practical, compassionate guidance for the moments that matter—at home, in classrooms, and in community spaces.
-        </p>
-
-        <div class="grid-3">
-          <div class="card">
-            <h3>Social–emotional skills</h3>
-            <p>Feelings language, empathy, friendship skills, problem-solving, and calm-down tools.</p>
-          </div>
-
-          <div class="card">
-            <h3>Learning through play</h3>
-            <p>Curiosity, exploration, hands-on projects, and scaffolding—without pressure or shame.</p>
-          </div>
-
-          <div class="card">
-            <h3>Support without stigma</h3>
-            <p>Neurodiversity-informed strategies and pathways to professional supports when needed.</p>
-          </div>
-        </div>
-
-        <hr class="sep" />
-
-        <div class="media-card card">
-          <div>
-            <span class="kicker">Classroom</span>
-            <h3>Guided play & exploration</h3>
-            <p class="section-sub" style="margin-bottom:0">
-              Balanced environments that encourage independence, collaboration, and positive modeling—so children build confidence and skills that last.
-            </p>
-            <ul class="list">
-              <li>Clear routines + flexible choices</li>
-              <li>Model kindness and respectful boundaries</li>
-              <li>Small steps, big encouragement</li>
-            </ul>
-          </div>
-
-          <div class="media">
-            <img src="assets/images/classroom-play.png" alt="Classroom play and building" />
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="container">
-      © <span id="y"></span> WorldLeaders. Built with care for families, children, and educators.
     </div>
-  </footer>
+    <div class="foot-bottom">&copy; <span id="yr"></span> WorldLeaders &middot; Made with care in Canada &#127809;</div>
+  </div>
+</footer>
 
-  <script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-  </script>
-
-  <!-- WorldLeaders AI Chatbot -->
-  <script src="assets/chatbot.js"></script>
+<script src="main.js?v=20260726-1" defer></script>
+<!-- Keep your existing RAG chatbot -->
+<script src="assets/chatbot.js"></script>
 </body>
 </html>

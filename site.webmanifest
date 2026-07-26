@@ -1,0 +1,12 @@
+{
+  "name": "WorldLeaders",
+  "short_name": "WorldLeaders",
+  "description": "Raising confident, kind, capable kids — with warm, neurodiversity-informed support.",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#FCF4EE",
+  "background_color": "#FCF4EE",
+  "display": "standalone"
+}
