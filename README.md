@@ -1,2 +1,2 @@
 # worldleaders-website
-WorldLeaders – raising confident, morally aware children
+WorldLeaders – raising confident, morally aware children.
