@@ -116,6 +116,21 @@ const EM = '<svg class="brand-mark" viewBox="0 0 64 64" width="44" height="44" a
 
 function esc(s = "") { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
 
+function subscribeForm(prefix) {
+  return `<section class="section" style="padding-top:8px"><div class="wrap"><div class="card reveal" style="max-width:600px;margin:0 auto;text-align:center">
+  <div class="chip chip-marigold" style="margin:0 auto 16px">&#128233;</div>
+  <h3 style="font-size:1.6rem;margin-bottom:8px">Get the weekly insight</h3>
+  <p style="color:var(--ink-soft);font-weight:600;margin-bottom:20px">One short, practical read each week on what&rsquo;s really going on beneath children&rsquo;s behaviour &mdash; and what actually helps. Free. Unsubscribe anytime.</p>
+  <form class="wl-subscribe" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+    <input type="email" name="email" required placeholder="you@example.com" aria-label="Email address" style="flex:1;min-width:220px;font-family:Nunito,sans-serif;font-size:1rem;font-weight:600;color:var(--ink);background:var(--cream);border:2px solid rgba(42,30,66,.12);border-radius:100px;padding:13px 20px">
+    <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px" value="">
+    <button class="btn btn-primary" type="submit">Subscribe <span class="arrow">&rarr;</span></button>
+    <p class="wl-subscribe-msg" role="status" style="width:100%;margin:8px 0 0;font-weight:700;min-height:1.2em"></p>
+  </form>
+</div></div></section>`;
+}
+
+
 function head(title, desc, prefix) {
   return `<!doctype html>
 <html lang="en">
@@ -210,6 +225,7 @@ ${nav("../", "insights.html")}
     </div></div>
   </div>
 </section>
+${subscribeForm("../")}
 </main>
 ${footer("../")}`;
 }
@@ -246,6 +262,7 @@ ${nav("", "insights.html")}
     </div>
   </div>
 </section>
+${subscribeForm("")}
 </main>
 ${footer("")}`;
   fs.writeFileSync(path.join(ROOT, "insights.html"), indexHtml);
