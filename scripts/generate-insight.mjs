@@ -58,17 +58,19 @@ const system = [
   "SAFETY: Write an ILLUSTRATIVE, COMPOSITE scenario. Use an invented first name in quotes (e.g. \"Sam\"). NEVER reference a real, named child, family, school, city incident, or news event. Do not invent statistics or cite sources.",
   "LENS: Frame 'what could have helped' through three traditions side by side — Reggio Emilia (the environment and the image of the capable child), Montessori (prepared environment, freedom within limits), and general early-childhood practice (regulate first, teach second). Keep each distinct and practical.",
   "Educational content only — not medical, legal, or diagnostic advice.",
+  "Use only straight ASCII quotes and standard punctuation. Escape any double-quote that appears inside a string value. Do not use smart/curly quotes.",
   "Return ONLY a single minified JSON object (no code fences, no commentary) with EXACTLY these keys:",
   '{"title": string (<= 8 words), "dek": string (one hook sentence), "slug": string (kebab-case, <= 5 words), "scenario": [string, string], "reframe": [string], "whyItHappens": [{"title": string,"text": string},{..},{..}] (exactly 3), "whatHelps": [{"tradition":"Reggio Emilia","title":string,"text":string},{"tradition":"Montessori","title":string,"text":string},{"tradition":"Early-childhood practice","title":string,"text":string}], "tryThis": [string,string,string,string,string], "ctaHeading": string, "imagePrompt": string (a short visual description of a warm, abstract scene for this topic — NO people\'s faces, NO text)}',
 ].join("\n");
 
-async function generateArticle() {
+async function callOpenAIJson() {
   const res = await fetch("https://api.openai.com/v1/responses", {
     method: "POST",
     headers: { Authorization: `Bearer ${OPENAI_API_KEY}`, "Content-Type": "application/json" },
     body: JSON.stringify({
       model: OPENAI_MODEL,
       max_output_tokens: 1600,
+      text: { format: { type: "json_object" } }, // force valid JSON
       input: [
         { role: "system", content: system },
         { role: "user", content: `This week's situation to explore: ${theme}\nWrite the JSON now.` },
@@ -77,11 +79,37 @@ async function generateArticle() {
   });
   const data = await res.json().catch(() => ({}));
   if (!res.ok) throw new Error(data?.error?.message || `OpenAI error ${res.status}`);
-  const raw =
+  return (
     (typeof data.output_text === "string" && data.output_text) ||
     (data.output || []).flatMap((o) => o?.content || [])
-      .filter((c) => c?.type === "output_text" || c?.type === "text").map((c) => c.text).join("");
-  return JSON.parse(raw.slice(raw.indexOf("{"), raw.lastIndexOf("}") + 1));
+      .filter((c) => c?.type === "output_text" || c?.type === "text").map((c) => c.text).join("")
+  );
+}
+
+// Parse forgivingly: strip code fences, slice to the outermost object, drop trailing commas.
+function tolerantParse(raw) {
+  let str = String(raw || "").trim();
+  str = str.replace(/^```(?:json)?/i, "").replace(/```$/i, "").trim();
+  const a = str.indexOf("{"), b = str.lastIndexOf("}");
+  if (a !== -1 && b !== -1) str = str.slice(a, b + 1);
+  try { return JSON.parse(str); } catch (_) {}
+  return JSON.parse(str.replace(/,\s*([}\]])/g, "$1")); // remove trailing commas, then parse
+}
+
+async function generateArticle() {
+  let lastErr;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      const raw = await callOpenAIJson();
+      const obj = tolerantParse(raw);
+      if (!obj || !obj.title || !Array.isArray(obj.whatHelps)) throw new Error("incomplete JSON");
+      return obj;
+    } catch (e) {
+      lastErr = e;
+      console.warn(`Article generation attempt ${attempt}/3 failed: ${e.message}`);
+    }
+  }
+  throw lastErr;
 }
 
 /* ---------------- 2. hero illustration ---------------- */
