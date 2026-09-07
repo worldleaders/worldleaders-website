@@ -186,7 +186,7 @@ function nav(prefix, active) {
   return `<header class="site-header"><div class="wrap nav">
 <a class="brand" href="${prefix}index.html" aria-label="WorldLeaders home">${EM}<span>World<b>Leaders</b></span></a>
 <nav class="nav-links" aria-label="Primary">
-${link("philosophy.html", "Philosophy")}${link("approach.html", "Approach")}${link("learning.html", "Learning")}${link("neurodiversity.html", "Neurodiversity")}${link("parents.html", "For Parents")}${link("resources.html", "Resources")}${link("insights.html", "Insights")}
+${link("philosophy.html", "Philosophy")}${link("approach.html", "Approach")}${link("learning.html", "Learning")}${link("neurodiversity.html", "Neurodiversity")}${link("parents.html", "For Parents")}${link("resources.html", "Resources")}${link("insights.html", "Insights")}${link("about.html", "About")}
 <a class="btn btn-primary nav-cta" href="${prefix}contact.html">Contact us</a>
 </nav>
 <button class="menu-btn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
@@ -197,7 +197,7 @@ function footer(prefix) {
   return `<footer class="site-footer"><div class="wrap">
 <div class="foot-grid">
 <div class="foot-brand"><a class="brand" href="${prefix}index.html">${EM}<span>World<b>Leaders</b></span></a><p>Raising confident, morally aware children through play, connection, and purpose.</p></div>
-<div class="foot-col"><h4>Explore</h4><a href="${prefix}philosophy.html">Philosophy</a><a href="${prefix}neurodiversity.html">Neurodiversity</a><a href="${prefix}insights.html">Weekly Insights</a></div>
+<div class="foot-col"><h4>Explore</h4><a href="${prefix}philosophy.html">Philosophy</a><a href="${prefix}neurodiversity.html">Neurodiversity</a><a href="${prefix}insights.html">Weekly Insights</a><a href="${prefix}about.html">About Carol</a></div>
 <div class="foot-col"><h4>Support</h4><a href="${prefix}parents.html">For Parents</a><a href="${prefix}resources.html">Resources</a><a href="${prefix}contact.html">Contact</a></div>
 </div>
 <div class="foot-bottom">&copy; <span id="yr"></span> WorldLeaders &middot; Made with care in Canada &#127809;</div>
